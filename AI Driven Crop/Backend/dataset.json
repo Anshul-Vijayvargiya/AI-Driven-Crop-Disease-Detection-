@@ -1,0 +1,1398 @@
+[
+  {
+    "id": 1,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Early Blight",
+    "confidence": 0.95,
+    "common_symptoms": [
+      "Dark concentric spots on lower leaves",
+      "Yellowing and premature leaf drop",
+      "Reduced fruit size and yield"
+    ],
+    "immediate_action": [
+      "Remove infected leaves immediately",
+      "Improve airflow by pruning",
+      "Avoid overhead irrigation"
+    ],
+    "organic_solution": [
+      "Neem oil spray twice weekly",
+      "Compost tea foliar application",
+      "Garlic extract spray"
+    ],
+    "chemical_solution": [
+      "Chlorothalonil fungicide",
+      "Mancozeb spray",
+      "Copper oxychloride application"
+    ],
+    "preventive_measures": [
+      "Crop rotation with non-solanaceous crops",
+      "Use resistant tomato varieties",
+      "Maintain proper plant spacing"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+    "confidence": 0.88,
+    "common_symptoms": [
+      "Severe upward leaf curling and distortion",
+      "Yellowing (chlorosis) of leaf margins",
+      "Stunted growth; poor flower and fruit set"
+    ],
+    "immediate_action": [
+      "Remove and destroy infected plants immediately",
+      "Control whitefly vectors aggressively",
+      "Isolate surrounding healthy plants"
+    ],
+    "organic_solution": [
+      "Horticultural oil to suppress whiteflies",
+      "Yellow sticky traps for monitoring",
+      "Introduction of natural whitefly predators"
+    ],
+    "chemical_solution": [
+      "Systemic insecticides (e.g., Imidacloprid) for vector control",
+      "Pyriproxyfen for whitefly eggs/nymphs"
+    ],
+    "preventive_measures": [
+      "Use virus-resistant or tolerant varieties",
+      "Plant during cooler periods when whitefly activity is low",
+      "Use UV-reflective mulch"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Late Blight",
+    "confidence": 0.97,
+    "common_symptoms": [
+      "Water-soaked lesions on leaves turning brown/black",
+      "White, fuzzy growth (spores) on the underside of leaves in humid conditions",
+      "Rotting tubers with reddish-brown dry decay"
+    ],
+    "immediate_action": [
+      "Apply fungicide immediately at first sign",
+      "Destroy severely infected foliage (haulms)",
+      "Avoid harvesting tubers until two weeks after chemical haulm destruction"
+    ],
+    "organic_solution": [
+      "Copper-based fungicides (e.g., Copper hydroxide)",
+      "Serenade (Bacillus subtilis) biofungicide"
+    ],
+    "chemical_solution": [
+      "Mancozeb or Chlorothalonil for protectant spray",
+      "Systemic fungicides (e.g., Propamocarb) for curative treatment"
+    ],
+    "preventive_measures": [
+      "Plant certified, disease-free seed potatoes",
+      "Hilling/Earthing up to prevent spore washdown to tubers",
+      "Improve drainage and avoid excessive irrigation"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Potato Scab",
+    "confidence": 0.85,
+    "common_symptoms": [
+      "Rough, corky, or pitted lesions on tuber skin",
+      "Reduced market value, cosmetic damage only",
+      "Most severe in dry soil conditions during tuber set"
+    ],
+    "immediate_action": [
+      "No immediate cure for current crop, focus on mitigation",
+      "Increase soil moisture in the tuberization zone",
+      "Do not save infected tubers for planting next season"
+    ],
+    "organic_solution": [
+      "Apply sulfur to reduce soil pH (long-term goal)",
+      "Use green manure crops in rotation"
+    ],
+    "chemical_solution": [
+      "Fumigation before planting (less common)",
+      "Seed treatment with flutolanil"
+    ],
+    "preventive_measures": [
+      "Maintain soil pH below 5.2-5.7",
+      "Use resistant potato varieties",
+      "Ensure adequate and consistent soil moisture during tuber set"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Wheat Stripe Rust (Yellow Rust)",
+    "confidence": 0.94,
+    "common_symptoms": [
+      "Bright yellow/orange pustules on leaves arranged in stripes or bands",
+      "Pustules break open, releasing yellow powdery spores",
+      "Reduced photosynthesis leading to shriveled grain and yield loss"
+    ],
+    "immediate_action": [
+      "Apply a systemic fungicide immediately if threshold is met",
+      "Scout surrounding fields for source of inoculum",
+      "Increase potassium fertilizer application"
+    ],
+    "organic_solution": [
+      "Limited effective organic options; focus on resistant varieties"
+    ],
+    "chemical_solution": [
+      "Triazole fungicides (e.g., Propiconazole)",
+      "Strobilurin fungicides (e.g., Azoxystrobin)"
+    ],
+    "preventive_measures": [
+      "Plant resistant or tolerant wheat varieties",
+      "Avoid planting overly early (high risk for early infection)",
+      "Destroy volunteer wheat and grassy weeds"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Fusarium Head Blight (Scab)",
+    "confidence": 0.90,
+    "common_symptoms": [
+      "Premature bleaching/blighting of individual or entire spikelets on the head",
+      "Pinkish or orange growth on infected spikelets in humid conditions",
+      "Produces mycotoxin (DON) which contaminates grain"
+    ],
+    "immediate_action": [
+      "Apply fungicide during the early flowering (anthesis) stage (most critical window)",
+      "If grain is harvested, segregate affected fields"
+    ],
+    "organic_solution": [
+      "Biological control agents (e.g., Clonostachys rosea) as seed treatment"
+    ],
+    "chemical_solution": [
+      "Triazole fungicides (e.g., Metconazole, Tebuconazole) at flowering"
+    ],
+    "preventive_measures": [
+      "Use resistant varieties",
+      "Rotate wheat with non-cereal crops (corn is a major host, so avoid rotation after corn)",
+      "Reduce crop residue through tillage"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Cotton Leaf Curl Virus (CLCuV)",
+    "confidence": 0.93,
+    "common_symptoms": [
+      "Upward curling and thickening of older leaves",
+      "Formation of cup-shaped, dark-green leafy outgrowths (enations) on the underside of leaves",
+      "Severe stunting and reduced boll size/number"
+    ],
+    "immediate_action": [
+      "Remove and destroy heavily diseased plants",
+      "Aggressive control of the whitefly vector",
+      "Apply insecticides immediately"
+    ],
+    "organic_solution": [
+      "Neem oil or horticultural oil for whitefly suppression",
+      "Cultural control: water and nutrient management"
+    ],
+    "chemical_solution": [
+      "Systemic neonicotinoid insecticides (seed treatment and foliar)",
+      "Pesticides targeting whitefly nymphs"
+    ],
+    "preventive_measures": [
+      "Plant CLCuV-resistant cotton varieties",
+      "Maintain a cotton-free period (dead season)",
+      "Control weeds that host whiteflies"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Bacterial Blight",
+    "confidence": 0.87,
+    "common_symptoms": [
+      "Angular, water-soaked spots on leaves (limited by veins)",
+      "Black lesions on stems (Black Arm symptom)",
+      "Water-soaked spots on bolls turning black and rotting"
+    ],
+    "immediate_action": [
+      "Apply Copper-based bactericide immediately",
+      "Prune affected branches during dry conditions",
+      "Avoid working in fields when foliage is wet"
+    ],
+    "organic_solution": [
+      "Copper-based organic sprays",
+      "Neem oil (limited efficacy for bacteria)"
+    ],
+    "chemical_solution": [
+      "Copper hydroxide or Copper oxychloride sprays"
+    ],
+    "preventive_measures": [
+      "Use acid-delinted and fungicide-treated seed",
+      "Plant resistant cotton varieties",
+      "Deep plowing to bury infested trash"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Rice Blast",
+    "confidence": 0.96,
+    "common_symptoms": [
+      "Diamond-shaped lesions with grayish-white centers and dark borders on leaves",
+      "Lesions on the neck (neck blast) causing the panicle to break",
+      "Blighted panicles with incomplete grain filling"
+    ],
+    "immediate_action": [
+      "Apply a systemic fungicide immediately (especially targeting the neck blast stage)",
+      "Reduce excessive nitrogen fertilization",
+      "Drain the field temporarily"
+    ],
+    "organic_solution": [
+      "Biological control agents (e.g., Bacillus spp.)",
+      "Silicon-containing fertilizers to enhance host resistance"
+    ],
+    "chemical_solution": [
+      "Triazole fungicides (e.g., Tricyclazole)",
+      "Strobilurin fungicides (e.g., Azoxystrobin)"
+    ],
+    "preventive_measures": [
+      "Use resistant rice varieties",
+      "Optimal nitrogen management (avoiding too much too early)",
+      "Seed treatment with fungicide"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Sheath Blight",
+    "confidence": 0.89,
+    "common_symptoms": [
+      "Water-soaked lesions on the leaf sheath, usually near the water line",
+      "Lesions grow vertically and turn grayish-white with purple/brown margins",
+      "White fungal bodies (sclerotia) produced on the sheath surface"
+    ],
+    "immediate_action": [
+      "Apply fungicide targeting the base of the plant (sheath)",
+      "Drain the field to lower humidity near the base",
+      "Reduce plant density to improve air circulation"
+    ],
+    "organic_solution": [
+      "Antagonistic fungi (e.g., Trichoderma viride) applied to soil",
+      "Field sanitation (removing infested stubble)"
+    ],
+    "chemical_solution": [
+      "Pencycuron or Validamycin fungicides",
+      "Fungicides from the Strobilurin class"
+    ],
+    "preventive_measures": [
+      "Use moderate levels of nitrogen fertilizer",
+      "Proper spacing of plants (avoiding dense canopy)",
+      "Deep plowing to bury sclerotia"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Septoria Leaf Spot",
+    "confidence": 0.90,
+    "common_symptoms": [
+      "Small, circular spots with dark borders and tan/gray centers on leaves",
+      "Tiny black specks (pycnidia) visible in the center of spots",
+      "Starts on the oldest leaves and moves up"
+    ],
+    "immediate_action": [
+      "Remove and destroy lowest infected leaves",
+      "Stake plants to improve air circulation",
+      "Apply fungicide to protect new growth"
+    ],
+    "organic_solution": [
+      "Baking soda solution spray",
+      "Serenade (Bacillus subtilis) biofungicide"
+    ],
+    "chemical_solution": [
+      "Chlorothalonil or Mancozeb fungicide"
+    ],
+    "preventive_measures": [
+      "Avoid overhead watering",
+      "Clean up all plant debris at the end of the season",
+      "Apply thick layer of mulch"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Bacterial Spot",
+    "confidence": 0.85,
+    "common_symptoms": [
+      "Small, dark, water-soaked spots on leaves that turn brown/black and greasy",
+      "Scab-like, raised spots on fruit",
+      "Lesions on stems and petioles"
+    ],
+    "immediate_action": [
+      "Discontinue overhead irrigation",
+      "Prune and destroy infected tissue during dry weather",
+      "Apply Copper-based sprays"
+    ],
+    "organic_solution": [
+      "Copper hydroxide (must be applied repeatedly)"
+    ],
+    "chemical_solution": [
+      "Copper fungicide plus Mancozeb"
+    ],
+    "preventive_measures": [
+      "Plant disease-free seeds and transplants",
+      "Avoid working in wet fields",
+      "Sanitize tools regularly"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Early Blight",
+    "confidence": 0.88,
+    "common_symptoms": [
+      "Small, dark brown spots on older leaves",
+      "Spots enlarge and form concentric rings (target pattern)",
+      "Leaf tissue around spots turns yellow"
+    ],
+    "immediate_action": [
+      "Apply protective fungicide (Chlorothalonil) immediately",
+      "Maintain adequate irrigation to reduce plant stress"
+    ],
+    "organic_solution": [
+      "Copper-based fungicides",
+      "Biofungicides (e.g., Bacillus amyloliquefaciens)"
+    ],
+    "chemical_solution": [
+      "Chlorothalonil or Mancozeb",
+      "Difenoconazole (systemic)"
+    ],
+    "preventive_measures": [
+      "Maintain good plant nutrition, especially nitrogen and potassium",
+      "Control weeds that can host the fungus",
+      "Rotate crops"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Potato Virus Y (PVY)",
+    "confidence": 0.92,
+    "common_symptoms": [
+      "Mottling, crinkling, or mosaic pattern on leaves",
+      "Severe stunting and leaf drop (necrotic strains)",
+      "Transmitted by aphids"
+    ],
+    "immediate_action": [
+      "Roguing (removal and destruction) of symptomatic plants",
+      "Control aphid vectors",
+      "Use mineral oil sprays to deter aphids"
+    ],
+    "organic_solution": [
+      "Neem oil or horticultural oil for aphid control",
+      "Introduction of natural aphid predators"
+    ],
+    "chemical_solution": [
+      "Insecticides targeting aphid vectors"
+    ],
+    "preventive_measures": [
+      "Plant certified, virus-free seed stock",
+      "Plant barrier crops around the field to deter aphids",
+      "Timely harvest to avoid late-season spread"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Wheat Leaf Rust (Brown Rust)",
+    "confidence": 0.93,
+    "common_symptoms": [
+      "Small, circular, raised orange-brown pustules, scattered randomly on upper leaf surface",
+      "Pustules rupture to release cinnamon-brown spores",
+      "Reduced kernel weight and yield"
+    ],
+    "immediate_action": [
+      "Apply a foliar fungicide if the disease severity justifies the cost (e.g., >5% severity)",
+      "Focus on protecting the flag leaf (most important for yield)"
+    ],
+    "organic_solution": [
+      "Biofungicides (limited effectiveness)"
+    ],
+    "chemical_solution": [
+      "Triazole (e.g., Tebuconazole) or Strobilurin fungicides"
+    ],
+    "preventive_measures": [
+      "Plant rust-resistant varieties",
+      "Destroy volunteer wheat plants",
+      "Avoid excessive nitrogen fertilization"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Septoria Tritici Blotch",
+    "confidence": 0.85,
+    "common_symptoms": [
+      "Irregular, dark brown lesions on lower leaves",
+      "Lesions enlarge and turn light gray/tan with tiny black specks (pycnidia) in the center",
+      "Disease spreads up the plant canopy"
+    ],
+    "immediate_action": [
+      "Apply fungicide (usually at the flag leaf stage) to protect the top leaves",
+      "Fungicide timing is critical for control"
+    ],
+    "organic_solution": [
+      "Focus on cultural practices: crop rotation, burying residue"
+    ],
+    "chemical_solution": [
+      "Azole (Triazole) or Strobilurin fungicides"
+    ],
+    "preventive_measures": [
+      "Plant varieties with high resistance",
+      "Tillage to bury wheat stubble (primary source of inoculum)",
+      "Longer crop rotation periods"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Verticillium Wilt",
+    "confidence": 0.90,
+    "common_symptoms": [
+      "Yellowing (chlorosis) and wilting of one side of a leaf or the entire plant",
+      "Dark brown to black discoloration in the vascular tissues (stems)",
+      "Premature defoliation and shedding of squares/bolls"
+    ],
+    "immediate_action": [
+      "No chemical cure; focus on symptom management",
+      "Maintain adequate water and balanced fertility to reduce plant stress"
+    ],
+    "organic_solution": [
+      "Soil solarization during fallow period",
+      "Use of biofumigation crops (e.g., mustard)"
+    ],
+    "chemical_solution": [
+      "Fumigation with chloropicrin (expensive, rare)"
+    ],
+    "preventive_measures": [
+      "Use resistant or tolerant varieties",
+      "Crop rotation with non-host crops (e.g., small grains)",
+      "Avoid excess nitrogen fertilizer"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Fusarium Wilt",
+    "confidence": 0.85,
+    "common_symptoms": [
+      "Sudden, permanent wilting of the plant",
+      "Brown vascular discoloration (darker than Verticillium) in the lower stem and taproot",
+      "Often occurs in conjunction with root-knot nematode damage"
+    ],
+    "immediate_action": [
+      "Plant destruction to prevent disease spread",
+      "Soil testing for nematode presence"
+    ],
+    "organic_solution": [
+      "Use of resistant varieties and nematode control"
+    ],
+    "chemical_solution": [
+      "Fumigation for nematode control",
+      "Nematicides"
+    ],
+    "preventive_measures": [
+      "Use resistant cotton varieties",
+      "Plant a non-host rotation crop to suppress the fungus and nematodes",
+      "Deep tillage to reduce soil inoculum"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Bacterial Leaf Blight (BLB)",
+    "confidence": 0.94,
+    "common_symptoms": [
+      "Water-soaked stripes on leaf margins near the tip (Kresek symptom in seedlings: wilting of entire plant)",
+      "Lesions turn yellow, then grayish-white, often with a wavy margin",
+      "Bacterial ooze visible as yellowish beads in the morning"
+    ],
+    "immediate_action": [
+      "Drain the field water immediately",
+      "Reduce nitrogen fertilizer application",
+      "Stop clipping seedlings before transplanting"
+    ],
+    "organic_solution": [
+      "Application of antagonistic bacteria (e.g., Pseudomonas fluorescens)"
+    ],
+    "chemical_solution": [
+      "Copper compounds or Streptomycin (in some regions/limited use)"
+    ],
+    "preventive_measures": [
+      "Use BLB-resistant rice varieties",
+      "Treat seeds with hot water or chemicals",
+      "Avoid damage to leaves and maintain low water levels"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Brown Spot (Bipolaris leaf spot)",
+    "confidence": 0.86,
+    "common_symptoms": [
+      "Oval or circular dark brown spots with a pale yellow halo on leaves and glumes",
+      "Spots may merge to form large blotches",
+      "High incidence of infection on grains (poor quality, low yield)"
+    ],
+    "immediate_action": [
+      "Apply foliar fungicide if severity is high",
+      "Apply potassium and zinc fertilizers (nutrient deficiency is key predisposing factor)"
+    ],
+    "organic_solution": [
+      "Use of silicon amendments in soil"
+    ],
+    "chemical_solution": [
+      "Fungicides (e.g., Mancozeb or Propiconazole)"
+    ],
+    "preventive_measures": [
+      "Use resistant varieties",
+      "Proper fertilization (balanced NPK, especially K)",
+      "Use healthy seeds; seed treatment with fungicide"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Fusarium Wilt",
+    "confidence": 0.90,
+    "common_symptoms": [
+      "Yellowing of lower leaves, often starting on one side of the plant or leaf",
+      "Wilting of the plant during the day, recovering at night",
+      "Dark brown streaking in the vascular tissue of the lower stem"
+    ],
+    "immediate_action": [
+      "No chemical control available; remove infected plants",
+      "Do not save seeds from infected fruit"
+    ],
+    "organic_solution": [
+      "Biofungicides (e.g., Trichoderma harzianum) in soil pre-planting"
+    ],
+    "chemical_solution": [
+      "Soil fumigation (rarely practical)"
+    ],
+    "preventive_measures": [
+      "Use resistant 'V' varieties",
+      "Lower soil temperature through heavy mulching",
+      "Maintain soil pH near neutral (6.5-7.0)"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Verticillium Wilt",
+    "confidence": 0.88,
+    "common_symptoms": [
+      "Yellowing of lower leaves, often starting as V-shaped lesions on leaf tips",
+      "Less severe wilting than Fusarium",
+      "Light brown discoloration in the vascular tissue"
+    ],
+    "immediate_action": [
+      "No chemical control; remove infected plants",
+      "Minimize plant stress (water and temperature)"
+    ],
+    "organic_solution": [
+      "Soil solarization",
+      "Biofungicides"
+    ],
+    "chemical_solution": [
+      "Soil fumigation (rare)"
+    ],
+    "preventive_measures": [
+      "Use resistant 'V' varieties",
+      "Crop rotation with non-host crops (e.g., corn, wheat)",
+      "Avoid planting in cold soils"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Blackleg and Soft Rot",
+    "confidence": 0.93,
+    "common_symptoms": [
+      "Stunted growth with rolling/yellowing of upper leaves (Blackleg)",
+      "Black, slimy decay at the base of the stem",
+      "Tubers develop a foul-smelling, mushy soft rot in storage"
+    ],
+    "immediate_action": [
+      "Remove and destroy infected plants and neighboring plants",
+      "Improve field drainage immediately",
+      "Avoid overhead irrigation in infected areas"
+    ],
+    "organic_solution": [
+      "Focus on cultural control and sanitation"
+    ],
+    "chemical_solution": [
+      "Seed piece treatment with streptomycin or copper formulations"
+    ],
+    "preventive_measures": [
+      "Use certified, disease-free seed potatoes",
+      "Avoid injuring tubers during harvest and handling",
+      "Plant in warm, well-drained soil"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Rhizoctonia Canker and Black Scurf",
+    "confidence": 0.87,
+    "common_symptoms": [
+      "Brownish-black cankers on young sprouts and stems below ground",
+      "Aerial tubers and leaf rolling (if stems are girdled)",
+      "Hard, black masses (scurf) on the surface of mature tubers"
+    ],
+    "immediate_action": [
+      "No action during the season for canker; focus on prevention next year",
+      "Maintain adequate soil moisture during the emergence period"
+    ],
+    "organic_solution": [
+      "Biological seed treatments (e.g., Trichoderma harzianum)"
+    ],
+    "chemical_solution": [
+      "In-furrow fungicides (e.g., Azoxystrobin) at planting",
+      "Fungicide seed treatments (e.g., Flutolanil)"
+    ],
+    "preventive_measures": [
+      "Plant late to avoid cold, wet conditions",
+      "Use certified seed",
+      "Avoid excessive irrigation after tuber initiation"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Take-All",
+    "confidence": 0.91,
+    "common_symptoms": [
+      "Premature whitening/bleaching of entire heads (whiteheads) in patches",
+      "Severely stunted growth",
+      "Blackening of roots and the base of the stem (crown)"
+    ],
+    "immediate_action": [
+      "No in-season chemical control available",
+      "Avoid harvesting from infected patches to prevent spreading soil inoculum"
+    ],
+    "organic_solution": [
+      "Increase soil manganese and ammonia-based nitrogen"
+    ],
+    "chemical_solution": [
+      "Seed treatments (limited effectiveness)"
+    ],
+    "preventive_measures": [
+      "Strict rotation with non-cereal crops (3+ years)",
+      "Control grassy weeds (hosts the fungus)",
+      "Maintain soil pH at or below 6.0"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Loose Smut",
+    "confidence": 0.95,
+    "common_symptoms": [
+      "Heads emerge as a mass of black, powdery spores (smut dust)",
+      "Spores are blown away, leaving a bare central stalk (rachis)",
+      "Infected heads are visible shortly after heading"
+    ],
+    "immediate_action": [
+      "Rogue (remove) infected heads before spores disperse",
+      "No chemical control is effective after emergence"
+    ],
+    "organic_solution": [
+      "Hot water treatment of seed (difficult, high risk)"
+    ],
+    "chemical_solution": [
+      "Systemic fungicide seed treatments (e.g., Triazole-based)"
+    ],
+    "preventive_measures": [
+      "Use certified, fungicide-treated seed",
+      "Plant resistant varieties"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Alternaria Leaf Spot",
+    "confidence": 0.84,
+    "common_symptoms": [
+      "Small, dark, circular spots on older leaves that enlarge and develop concentric rings",
+      "Severe premature defoliation, especially under potassium deficiency",
+      "Spots may also occur on bolls"
+    ],
+    "immediate_action": [
+      "Apply a foliar fungicide if defoliation is severe",
+      "Apply foliar potassium nitrate to alleviate nutrient stress"
+    ],
+    "organic_solution": [
+      "Copper-based sprays"
+    ],
+    "chemical_solution": [
+      "Fungicides (e.g., Chlorothalonil or Azoxystrobin)"
+    ],
+    "preventive_measures": [
+      "Maintain adequate potassium fertility",
+      "Bury infected crop residue after harvest",
+      "Avoid planting highly susceptible varieties"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Target Spot (Corynespora)",
+    "confidence": 0.89,
+    "common_symptoms": [
+      "Distinct, large spots with dark brown concentric rings (target pattern)",
+      "Starts on lower canopy leaves and moves up",
+      "Causes premature defoliation and yield loss"
+    ],
+    "immediate_action": [
+      "Apply a fungicide (especially important for mid-to-late season growth)",
+      "Improve air circulation within the canopy"
+    ],
+    "organic_solution": [
+      "Cultural practices and sanitation"
+    ],
+    "chemical_solution": [
+      "Fungicides from the Strobilurin group (e.g., Azoxystrobin)"
+    ],
+    "preventive_measures": [
+      "Bury crop residue through tillage",
+      "Crop rotation",
+      "Reduce plant density"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Tungro Virus (RTD)",
+    "confidence": 0.92,
+    "common_symptoms": [
+      "Stunting of plants, yellow-orange discoloration of younger leaves",
+      "Leaves may show mild mottling",
+      "Transmitted by the green leafhopper insect vector"
+    ],
+    "immediate_action": [
+      "Rouge and destroy infected plants",
+      "Aggressive control of the green leafhopper (GLH) vector",
+      "Drain water to discourage GLH"
+    ],
+    "organic_solution": [
+      "Neem oil spray for GLH control",
+      "Early planting to avoid high GLH populations"
+    ],
+    "chemical_solution": [
+      "Systemic insecticides (e.g., Neonicotinoids) for GLH control"
+    ],
+    "preventive_measures": [
+      "Use resistant varieties",
+      "Synchronous planting (planting all fields in the area at the same time)",
+      "Control volunteer rice plants and weeds"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "False Smut",
+    "confidence": 0.83,
+    "common_symptoms": [
+      "Individual rice grains transform into velvety, greenish-black spore balls (false smut balls)",
+      "Balls rupture to release powdery spores",
+      "Usually affects only a few grains per panicle"
+    ],
+    "immediate_action": [
+      "Remove smut balls manually before they burst (field sanitation)",
+      "Reduce high nitrogen application"
+    ],
+    "organic_solution": [
+      "Field sanitation"
+    ],
+    "chemical_solution": [
+      "Fungicides (e.g., Propiconazole) applied at the booting stage"
+    ],
+    "preventive_measures": [
+      "Avoid excessive nitrogen fertilizer",
+      "Use clean, certified seed",
+      "Use varieties that head out uniformly"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Buckeye Rot (Phytophthora)",
+    "confidence": 0.86,
+    "common_symptoms": [
+      "Brown, water-soaked spots on fruit that develop dark, concentric bands (like a buckeye)",
+      "Typically found on fruit touching the soil surface",
+      "Soft, mushy rot"
+    ],
+    "immediate_action": [
+      "Remove infected fruit and foliage",
+      "Apply protective fungicide",
+      "Mulch to prevent fruit contact with soil"
+    ],
+    "organic_solution": [
+      "Copper-based sprays",
+      "Staking plants"
+    ],
+    "chemical_solution": [
+      "Fungicides (e.g., Metalaxyl/Mancozeb or Chlorothalonil)"
+    ],
+    "preventive_measures": [
+      "Improve soil drainage",
+      "Staking and pruning to keep fruit off the ground",
+      "Avoid splash-up from the soil"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Blossom End Rot (BER)",
+    "confidence": 0.96,
+    "common_symptoms": [
+      "Water-soaked spot on the blossom end of the fruit (opposite the stem)",
+      "Spot enlarges, turns dark brown/black, leathery and sunken",
+      "Not a pathogen, but a physiological disorder (calcium deficiency)"
+    ],
+    "immediate_action": [
+      "Apply calcium chloride or calcium nitrate foliar spray immediately",
+      "Ensure consistent, even watering"
+    ],
+    "organic_solution": [
+      "Apply calcium-rich amendments (e.g., gypsum) to the soil",
+      "Consistent watering and deep mulch"
+    ],
+    "chemical_solution": [
+      "Calcium chloride foliar spray"
+    ],
+    "preventive_measures": [
+      "Maintain consistent soil moisture",
+      "Avoid high nitrogen fertilizer late in the season",
+      "Maintain soil pH at 6.5"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Common Mosaic Virus (PVX + PVY)",
+    "confidence": 0.85,
+    "common_symptoms": [
+      "Mottling, mild crinkling, and light-green mosaic patterns on leaves",
+      "Plants are generally stunted but may still produce tubers",
+      "Spread by aphids and contact"
+    ],
+    "immediate_action": [
+      "Rouge infected plants and volunteer potatoes",
+      "Control aphid vectors"
+    ],
+    "organic_solution": [
+      "Mineral oil sprays to deter aphids"
+    ],
+    "chemical_solution": [
+      "Insecticides for aphid vector control"
+    ],
+    "preventive_measures": [
+      "Plant certified seed stock",
+      "Eliminate all volunteer potatoes and weeds (hosts)",
+      "Plant resistant varieties"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Silver Scurf",
+    "confidence": 0.89,
+    "common_symptoms": [
+      "Light brown to silvery patches on the tuber skin, visible when wet",
+      "Patches darken over time, especially in storage",
+      "Causes water loss and shriveling of tubers in storage"
+    ],
+    "immediate_action": [
+      "No in-season field control; focus on storage conditions",
+      "Harvesting early may limit severity"
+    ],
+    "organic_solution": [
+      "Controlled atmosphere storage (reduced oxygen)"
+    ],
+    "chemical_solution": [
+      "Post-harvest fungicide treatment on tubers (e.g., Thiabendazole)",
+      "Fungicide seed treatments"
+    ],
+    "preventive_measures": [
+      "Plant certified, clean seed",
+      "Ensure proper ventilation and lower temperatures (below 4°C) in storage",
+      "Crop rotation"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Common Bunt (Stinking Smut)",
+    "confidence": 0.96,
+    "common_symptoms": [
+      "Infected kernels are replaced by a mass of black spores (bunt balls)",
+      "Heads appear slightly blue-green and remain upright instead of drooping",
+      "Infected grain releases a foul, fishy odor when crushed"
+    ],
+    "immediate_action": [
+      "Rogue (remove) infected heads (only practical for light infection)",
+      "Do not save seed from infected fields"
+    ],
+    "organic_solution": [
+      "Hot water seed treatment (difficult and high risk)"
+    ],
+    "chemical_solution": [
+      "Systemic fungicide seed treatments (mandatory for high-risk areas)"
+    ],
+    "preventive_measures": [
+      "Use certified, fungicide-treated seed",
+      "Plant resistant varieties",
+      "Clean all equipment that contacts seed or grain"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Barley Yellow Dwarf Virus (BYDV)",
+    "confidence": 0.84,
+    "common_symptoms": [
+      "Stunting of plants, reduced tillering",
+      "Leaf tips turn yellow, red, or purple, especially older leaves",
+      "Poor grain fill; transmitted by aphids"
+    ],
+    "immediate_action": [
+      "No direct chemical control for the virus",
+      "Control aphid vectors if population is high"
+    ],
+    "organic_solution": [
+      "Neem oil/horticultural oil for aphid control"
+    ],
+    "chemical_solution": [
+      "Seed treatment with systemic insecticide to protect seedlings from aphids",
+      "Foliar insecticide for severe aphid infestations"
+    ],
+    "preventive_measures": [
+      "Plant resistant varieties",
+      "Delayed planting to avoid peak aphid migration",
+      "Control volunteer cereals and grassy weeds"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Areolate Mildew",
+    "confidence": 0.80,
+    "common_symptoms": [
+      "White fungal patches on the underside of leaves",
+      "Upper surface shows yellowish, angular spots (limited by leaf veins)",
+      "Premature defoliation"
+    ],
+    "immediate_action": [
+      "Apply a sulfur-based fungicide",
+      "Improve air movement in the canopy"
+    ],
+    "organic_solution": [
+      "Sulfur dust/spray",
+      "Neem oil"
+    ],
+    "chemical_solution": [
+      "Sulfur-based fungicides"
+    ],
+    "preventive_measures": [
+      "Wider row spacing",
+      "Avoid excessive humidity",
+      "Proper timing of defoliation"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Anthracnose",
+    "confidence": 0.86,
+    "common_symptoms": [
+      "Dark, sunken lesions on seedlings (damping-off)",
+      "Reddish-brown spots on bolls that turn black and sunken",
+      "Pinkish-orange spore masses in the center of boll lesions when moist"
+    ],
+    "immediate_action": [
+      "Remove and destroy infected bolls and plants",
+      "Improve drainage and reduce canopy humidity"
+    ],
+    "organic_solution": [
+      "Copper sprays (limited efficacy on mature bolls)"
+    ],
+    "chemical_solution": [
+      "Fungicide seed treatment",
+      "Foliar fungicides containing chlorothalonil"
+    ],
+    "preventive_measures": [
+      "Use acid-delinted and treated seed",
+      "Rotate with non-host crops (e.g., corn, wheat)",
+      "Deep plowing to bury infested residue"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Khaira Disease (Zinc Deficiency)",
+    "confidence": 0.95,
+    "common_symptoms": [
+      "Yellowing of the basal part of the youngest leaves",
+      "Brownish-bronze spots appear on older leaves",
+      "Stunting and delayed maturity (physiological disorder, not pathogen)"
+    ],
+    "immediate_action": [
+      "Spray 0.5% Zinc sulfate solution (two applications)",
+      "Drain field and allow soil to dry out"
+    ],
+    "organic_solution": [
+      "Foliar application of chelated zinc products"
+    ],
+    "chemical_solution": [
+      "Zinc sulfate application (foliar or soil)"
+    ],
+    "preventive_measures": [
+      "Apply Zinc sulfate before transplanting in deficient soils",
+      "Green manuring before transplanting"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Water-Borne Virus (Grassy Stunt Virus - RGSV)",
+    "confidence": 0.88,
+    "common_symptoms": [
+      "Severe stunting and excessive tillering (grassy appearance)",
+      "Leaves are shorter, narrower, and often yellowish-green",
+      "Transmitted by the brown planthopper (BPH) vector"
+    ],
+    "immediate_action": [
+      "Rouge and destroy infected plants",
+      "Aggressive control of the BPH vector",
+      "Monitor BPH population with yellow sticky traps"
+    ],
+    "organic_solution": [
+      "Neem oil for BPH control"
+    ],
+    "chemical_solution": [
+      "Systemic insecticides (e.g., Buprofezin, Imidacloprid) for BPH"
+    ],
+    "preventive_measures": [
+      "Use RGSV-resistant varieties",
+      "Avoid too-early or too-late planting",
+      "Control volunteer rice"
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Target Spot",
+    "confidence": 0.87,
+    "common_symptoms": [
+      "Small, dark, circular spots on leaves that develop target-like concentric rings",
+      "Causes defoliation and sunscald on fruit",
+      "Infected fruit has dark, slightly sunken, firm lesions"
+    ],
+    "immediate_action": [
+      "Apply protective fungicide (Chlorothalonil or Mancozeb)",
+      "Improve air circulation"
+    ],
+    "organic_solution": [
+      "Copper sprays"
+    ],
+    "chemical_solution": [
+      "Chlorothalonil or Azoxystrobin"
+    ],
+    "preventive_measures": [
+      "Use pathogen-free seed",
+      "Deep plowing to bury residue",
+      "Avoid overhead watering"
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "disease": "Healthy",
+    "confidence": 0.99,
+    "common_symptoms": [
+      "Vibrant green foliage",
+      "Strong, upright growth habit",
+      "Consistent fruit setting and sizing"
+    ],
+    "immediate_action": [
+      "Routine monitoring (scouting)",
+      "Ensure balanced NPK and adequate watering"
+    ],
+    "organic_solution": [
+      "Regular compost tea application"
+    ],
+    "chemical_solution": [
+      "No application needed (avoid prophylactic sprays)"
+    ],
+    "preventive_measures": [
+      "Prune non-productive suckers for vigor",
+      "Maintain mulch layer to conserve moisture",
+      "Fertilize based on soil test results"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Potato Tuber Moth (PTM) Damage",
+    "confidence": 0.90,
+    "common_symptoms": [
+      "Mines (tunnels) within leaf tissue, especially near the veins",
+      "Tunnels and larvae visible inside tubers near the eyes",
+      "Frass (excrement) accumulation around tunnel entrance"
+    ],
+    "immediate_action": [
+      "Control flying adult moths with pheromone traps",
+      "Apply insecticides to foliage",
+      "Destroy infested tubers"
+    ],
+    "organic_solution": [
+      "Bacillus thuringiensis (Bt) application",
+      "Pheromone traps for mass trapping/mating disruption"
+    ],
+    "chemical_solution": [
+      "Insecticides (e.g., Chlorantraniliprole) targeting larvae"
+    ],
+    "preventive_measures": [
+      "Effective hilling (earthing up) to protect tubers",
+      "Harvest promptly and deep-bury infested residue",
+      "Store tubers under cool, dark conditions"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Potato",
+    "scientific_name": "Solanum tuberosum",
+    "disease": "Healthy",
+    "confidence": 0.99,
+    "common_symptoms": [
+      "Lush, full, green canopy",
+      "Uniform plant emergence",
+      "No visible lesions or wilting"
+    ],
+    "immediate_action": [
+      "Continue routine scouting for pests and disease",
+      "Monitor soil moisture for consistent supply"
+    ],
+    "organic_solution": [
+      "No action needed"
+    ],
+    "chemical_solution": [
+      "No application needed"
+    ],
+    "preventive_measures": [
+      "Maintain hilling around the base of plants",
+      "Ensure balanced fertilization",
+      "Keep weed competition low"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Healthy",
+    "confidence": 0.99,
+    "common_symptoms": [
+      "Erect, vibrant green leaves and tillers",
+      "Uniform stand height and maturity",
+      "Clean, well-filled heads"
+    ],
+    "immediate_action": [
+      "Continue monitoring; especially watch for rust diseases near flag leaf emergence"
+    ],
+    "organic_solution": [
+      "No action needed"
+    ],
+    "chemical_solution": [
+      "No application needed (unless for prophylactic use based on risk models)"
+    ],
+    "preventive_measures": [
+      "Ensure final top-dressing of nitrogen is correct",
+      "Monitor weather conditions (moisture/temperature) for disease forecasting"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Wheat",
+    "scientific_name": "Triticum aestivum",
+    "disease": "Glume Blotch (Stagonospora)",
+    "confidence": 0.87,
+    "common_symptoms": [
+      "Brown lesions on the glumes (chaff) that turn purplish-brown at the tip",
+      "Dark brown lesions on leaf nodes and sheaths",
+      "Black specks (pycnidia) in the center of lesions on leaves and glumes"
+    ],
+    "immediate_action": [
+      "Apply fungicide to protect the upper canopy",
+      "Fungicide timing should align with flag leaf and head emergence"
+    ],
+    "organic_solution": [
+      "Focus on cultural practices"
+    ],
+    "chemical_solution": [
+      "Fungicides (e.g., Triazole/Strobilurin mixes)"
+    ],
+    "preventive_measures": [
+      "Plant resistant varieties",
+      "Bury infected residue via tillage",
+      "Rotate with non-host crops"
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Healthy",
+    "confidence": 0.99,
+    "common_symptoms": [
+      "Dark green, well-developed leaves",
+      "Good square and boll retention",
+      "Healthy white roots"
+    ],
+    "immediate_action": [
+      "Continue insect pest management",
+      "Monitor water needs during boll filling stage"
+    ],
+    "organic_solution": [
+      "No action needed"
+    ],
+    "chemical_solution": [
+      "No application needed"
+    ],
+    "preventive_measures": [
+      "Ensure proper irrigation and drainage",
+      "Avoid late-season excessive nitrogen (to promote timely maturity)"
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "disease": "Ascochyta Blight (Wet Weather Blight)",
+    "confidence": 0.83,
+    "common_symptoms": [
+      "Small, circular, yellowish spots on leaves and bolls",
+      "Spots develop dark borders and whitish-gray centers",
+      "Often appears during prolonged cool, wet periods"
+    ],
+    "immediate_action": [
+      "Apply a broad-spectrum fungicide (Chlorothalonil)",
+      "Avoid working in the field when plants are wet"
+    ],
+    "organic_solution": [
+      "Copper sprays"
+    ],
+    "chemical_solution": [
+      "Chlorothalonil fungicide"
+    ],
+    "preventive_measures": [
+      "Tillage of infected residue",
+      "Crop rotation"
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Healthy",
+    "confidence": 0.99,
+    "common_symptoms": [
+      "Uniform green color across the field",
+      "Strong tillering and panicle development",
+      "No signs of discoloration or wilting"
+    ],
+    "immediate_action": [
+      "Monitor water level and maintain optimal depth",
+      "Scout for Brown Planthopper (BPH) and Leaf Folder"
+    ],
+    "organic_solution": [
+      "No action needed"
+    ],
+    "chemical_solution": [
+      "No application needed"
+    ],
+    "preventive_measures": [
+      "Practice good weed control",
+      "Ensure proper drainage before harvest"
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "disease": "Bacterial Sheath Rot",
+    "confidence": 0.85,
+    "common_symptoms": [
+      "Irregular lesions on the flag leaf sheath that cover the emerging panicle",
+      "Panicle emergence is inhibited; panicle may be partially diseased or rotten",
+      "Brown to black lesions with irregular edges"
+    ],
+    "immediate_action": [
+      "Apply bactericide (e.g., Copper compounds)",
+      "Reduce N fertilizer application at the panicle emergence stage"
+    ],
+    "organic_solution": [
+      "Copper-based sprays"
+    ],
+    "chemical_solution": [
+      "Copper hydroxide"
+    ],
+    "preventive_measures": [
+      "Control sheath mite and other insects that cause wounds",
+      "Balanced NPK fertilization",
+      "Use resistant varieties"
+    ]
+  }
+]
