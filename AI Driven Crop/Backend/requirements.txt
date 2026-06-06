@@ -8,6 +8,8 @@ python-dateutil==2.8.2
 Pillow>=10.0.0
 requests==2.31.0
 gunicorn==21.2.0
+tensorflow==2.15.0
+numpy==1.26.4
 
 # Development
 pytest==7.4.0

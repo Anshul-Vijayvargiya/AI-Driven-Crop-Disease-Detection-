@@ -2,7 +2,7 @@
 from flask import Blueprint, request, jsonify, current_app
 from werkzeug.utils import secure_filename
 import os
-from mock_model import get_disease_recommendation
+from ai_model import predict_disease
 
 prediction_bp = Blueprint('prediction', __name__)
 
@@ -14,11 +14,13 @@ def allowed_file(filename):
 @prediction_bp.route("", methods=["POST"])
 def predict():
     # Validate inputs
-    if "image" not in request.files or "crop" not in request.form:
-        return jsonify({"error": "Image or crop not provided"}), 400
+    if "image" not in request.files:
+        return jsonify({"error": "Image not provided"}), 400
 
     image = request.files["image"]
-    crop_name = request.form.get("crop")
+    
+    # We still accept crop_name if provided, but the AI model will determine the actual crop
+    crop_name = request.form.get("crop", "")
 
     if image.filename == "":
         return jsonify({"error": "No image selected"}), 400
@@ -34,10 +36,10 @@ def predict():
     filepath = os.path.join(upload_folder, filename)
     image.save(filepath)
 
-    # Call MOCK model
-    result = get_disease_recommendation(crop_name)
+    # Call AI model
+    result = predict_disease(filepath)
 
-    if result["error"]:
+    if result.get("error"):
         return jsonify(result), 404
 
     return jsonify({

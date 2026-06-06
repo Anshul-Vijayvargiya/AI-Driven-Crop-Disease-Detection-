@@ -11,8 +11,11 @@ with open(dataset_path, "r", encoding="utf-8") as f:
 def get_disease_recommendation(crop_name):
     crop_name = crop_name.strip().lower()
 
-    # Filter dataset to match crop
-    results = [item for item in DATA if item["name"].lower() == crop_name]
+    if not crop_name:
+        results = DATA
+    else:
+        # Filter dataset to match crop
+        results = [item for item in DATA if item["name"].lower() == crop_name]
 
     if not results:
         return {
