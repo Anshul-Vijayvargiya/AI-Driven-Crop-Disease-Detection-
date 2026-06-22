@@ -12,12 +12,17 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
   const [user, setUser] = useState<{ name: string; email: string } | null>(null);
   const [open, setOpen] = useState(false);
 
+  const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+  const isAuthenticated = !!token || !!user;
+
   const menuItems = [
     { id: "landing", label: "Home" },
-    { id: "dashboard", label: "Dashboard" },
-    { id: "detect", label: "Detect Disease" },
-    { id: "weather", label: "Weather" },
-    { id: "mandi", label: "Market Prices" },
+    ...(isAuthenticated ? [
+      { id: "dashboard", label: "Dashboard" },
+      { id: "detect", label: "Detect Disease" },
+      { id: "weather", label: "Weather" },
+      { id: "mandi", label: "Market Prices" },
+    ] : []),
     { id: "how-it-works", label: "How It Works" },
   ];
 

@@ -58,6 +58,13 @@ function App() {
   };
 
   const renderPage = () => {
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    const protectedPages = ["dashboard", "detect", "results", "weather", "mandi"];
+
+    if (protectedPages.includes(currentPage) && !token) {
+      return <Login onNavigate={setCurrentPage} />;
+    }
+
     switch (currentPage) {
       case "landing":
         return <Landing onNavigate={setCurrentPage} />;
