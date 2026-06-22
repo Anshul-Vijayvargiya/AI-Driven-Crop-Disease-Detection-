@@ -37,32 +37,47 @@ interface User {
   role: string;
 }
 
+interface DashboardStats {
+  stats: {
+    totalScans: number;
+    diseasesDetected: number;
+    healthyCrops: number;
+    accuracyRate: number;
+  };
+  recentDetections: any[];
+  diseaseData: any[];
+  monthlyData: any[];
+}
+
 export function Dashboard({ onNavigate }: DashboardProps) {
   const [user, setUser] = useState<User | null>(null);
+  const [dashboardData, setDashboardData] = useState<DashboardStats | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  /*useEffect(() => {
-  apiClient.get("/auth/me")
-    .then((res) => {
-      if (res.data && res.data.user) {
-        setUser(res.data.user);
-      } else {
-        setUser(null); // guest mode
-      }
-    })
-    .catch(() => setUser(null));
-}, []);*/
-useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
     if (!token) {
       setUser(null); // guest mode
+      setLoading(false);
       return;
     }
-    apiClient
-      .get("/auth/me")
-      .then((res) => setUser(res.data.user || res.data))
-      .catch(() => setUser(null));
+    
+    // Fetch user and stats
+    Promise.all([
+      apiClient.get("/auth/me"),
+      apiClient.get("/dashboard/stats")
+    ])
+      .then(([userRes, statsRes]) => {
+        setUser(userRes.data.user || userRes.data);
+        setDashboardData(statsRes.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching dashboard data:", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
-
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -77,65 +92,71 @@ useEffect(() => {
     "Apply organic fertilizers for stronger plant immunity",
   ];
 
-  const stats = [
+  const defaultStats = [
     {
       label: "Total Scans",
-      value: "247",
-      change: "+12%",
+      value: dashboardData?.stats.totalScans.toString() || "0",
+      change: "+0%",
       icon: Scan,
       bgColor: "bg-blue-50",
       textColor: "text-blue-600",
     },
     {
       label: "Diseases Detected",
-      value: "34",
-      change: "-8%",
+      value: dashboardData?.stats.diseasesDetected.toString() || "0",
+      change: "-0%",
       icon: AlertTriangle,
       bgColor: "bg-red-50",
       textColor: "text-red-600",
     },
     {
       label: "Healthy Crops",
-      value: "213",
-      change: "+15%",
+      value: dashboardData?.stats.healthyCrops.toString() || "0",
+      change: "+0%",
       icon: CheckCircle,
       bgColor: "bg-green-50",
       textColor: "text-green-600",
     },
     {
       label: "Accuracy Rate",
-      value: "95.8%",
-      change: "+2%",
+      value: `${dashboardData?.stats.accuracyRate || 0}%`,
+      change: "+0%",
       icon: TrendingUp,
       bgColor: "bg-purple-50",
       textColor: "text-purple-600",
     },
   ];
 
-  const recentDetections = [
-    { id: 1, disease: "Late Blight", crop: "Tomato", date: "2 hours ago", severity: "High", confidence: 92 },
-    { id: 2, disease: "Healthy", crop: "Wheat", date: "5 hours ago", severity: "None", confidence: 98 },
-    { id: 3, disease: "Leaf Rust", crop: "Wheat", date: "1 day ago", severity: "Medium", confidence: 87 },
-    { id: 4, disease: "Powdery Mildew", crop: "Cucumber", date: "1 day ago", severity: "Low", confidence: 83 },
-    { id: 5, disease: "Healthy", crop: "Rice", date: "2 days ago", severity: "None", confidence: 96 },
-  ];
+  const recentDetections = dashboardData?.recentDetections && dashboardData.recentDetections.length > 0
+    ? dashboardData.recentDetections
+    : [
+        { id: 1, disease: "Late Blight", crop: "Tomato", date: "2 hours ago", severity: "High", confidence: 92 },
+        { id: 2, disease: "Healthy", crop: "Wheat", date: "5 hours ago", severity: "None", confidence: 98 },
+        { id: 3, disease: "Leaf Rust", crop: "Wheat", date: "1 day ago", severity: "Medium", confidence: 87 },
+        { id: 4, disease: "Powdery Mildew", crop: "Cucumber", date: "1 day ago", severity: "Low", confidence: 83 },
+        { id: 5, disease: "Healthy", crop: "Rice", date: "2 days ago", severity: "None", confidence: 96 },
+      ];
 
-  const diseaseData = [
-    { name: "Late Blight", value: 12, color: "#ef4444" },
-    { name: "Early Blight", value: 8, color: "#f97316" },
-    { name: "Leaf Rust", value: 6, color: "#f59e0b" },
-    { name: "Powdery Mildew", value: 5, color: "#eab308" },
-    { name: "Others", value: 3, color: "#84cc16" },
-  ];
+  const diseaseData = dashboardData?.diseaseData && dashboardData.diseaseData.length > 0
+    ? dashboardData.diseaseData
+    : [
+        { name: "Late Blight", value: 12, color: "#ef4444" },
+        { name: "Early Blight", value: 8, color: "#f97316" },
+        { name: "Leaf Rust", value: 6, color: "#f59e0b" },
+        { name: "Powdery Mildew", value: 5, color: "#eab308" },
+        { name: "Others", value: 3, color: "#84cc16" },
+      ];
 
-  const monthlyData = [
-    { month: "Jan", scans: 45 },
-    { month: "Feb", scans: 52 },
-    { month: "Mar", scans: 61 },
-    { month: "Apr", scans: 58 },
-    { month: "May", scans: 67 },
-    { month: "Jun", scans: 72 },
-  ];
+  const monthlyData = dashboardData?.monthlyData && dashboardData.monthlyData.length > 0
+    ? dashboardData.monthlyData
+    : [
+        { month: "Jan", scans: 45 },
+        { month: "Feb", scans: 52 },
+        { month: "Mar", scans: 61 },
+        { month: "Apr", scans: 58 },
+        { month: "May", scans: 67 },
+        { month: "Jun", scans: 72 },
+      ];
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
@@ -149,6 +170,14 @@ useEffect(() => {
         return "bg-gray-100 text-gray-700";
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-white">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen py-12 bg-gradient-to-b from-green-50 to-white">
@@ -177,7 +206,7 @@ useEffect(() => {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {stats.map((stat, index) => {
+            {defaultStats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div
@@ -278,7 +307,14 @@ useEffect(() => {
         {/* Date */}
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <Calendar className="size-4" />
-          <span>{detection.date}</span>
+          <span>
+            {(() => {
+              const d = new Date(detection.date);
+              return isNaN(d.getTime()) 
+                ? detection.date 
+                : d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            })()}
+          </span>
         </div>
 
         {/* Action button */}

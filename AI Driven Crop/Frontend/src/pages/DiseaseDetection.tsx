@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Upload, Camera, AlertCircle, X, CheckCircle, Leaf } from 'lucide-react';
 import { LoadingAnimation } from '../components/LoadingAnimation';
 import { ErrorState } from '../components/ErrorStates';
@@ -16,6 +16,53 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
   const [isDragging, setIsDragging] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [crop, setCrop] = useState(""); // ✅ optional crop name
+  const [showCamera, setShowCamera] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const startCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+      setShowCamera(true);
+    } catch (err) {
+      console.error("Error accessing camera:", err);
+      alert("Could not access camera. Please check permissions.");
+    }
+  };
+
+  const stopCamera = () => {
+    if (videoRef.current && videoRef.current.srcObject) {
+      const stream = videoRef.current.srcObject as MediaStream;
+      stream.getTracks().forEach(track => track.stop());
+      videoRef.current.srcObject = null;
+    }
+    setShowCamera(false);
+  };
+
+  const capturePhoto = () => {
+    if (videoRef.current && canvasRef.current) {
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg');
+        setSelectedImage(dataUrl);
+        stopCamera();
+      }
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      stopCamera();
+    };
+  }, []);
 
   // Drag/drop handlers...
   const handleDragOver = useCallback((e: React.DragEvent) => { e.preventDefault(); setIsDragging(true); }, []);
@@ -126,8 +173,32 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                   </div>
                 )}
 
+                {/* Camera Zone */}
+                {showCamera && !selectedImage && (
+                  <div className="mt-8 bg-black rounded-xl overflow-hidden relative">
+                    <video ref={videoRef} autoPlay playsInline className="w-full h-auto max-h-[500px] object-contain" />
+                    <canvas ref={canvasRef} className="hidden" />
+                    <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 flex justify-center gap-4">
+                      <button
+                        onClick={capturePhoto}
+                        className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors flex items-center gap-2"
+                      >
+                        <Camera className="w-5 h-5" />
+                        Take Photo
+                      </button>
+                      <button
+                        onClick={stopCamera}
+                        className="px-6 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors flex items-center gap-2"
+                      >
+                        <X className="w-5 h-5" />
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                )}
+
                 {/* Upload Zone */}
-                {!selectedImage && (
+                {!selectedImage && !showCamera && (
                   <div
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
@@ -139,12 +210,24 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                     <Camera className="size-16 text-gray-400 mx-auto mb-4" />
                     <p className="text-gray-900 mb-2">Drag and drop your image here</p>
                     <p className="text-gray-500 mb-4">or</p>
-                    <label className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors">
-                      <Upload className="size-5" />
-                      Browse Files
-                      <input id="file-input" type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
-                    </label>
-                    <p className="text-sm text-gray-400 mt-4">Supports: JPG, PNG, JPEG (Max 10MB)</p>
+                    
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                      <label className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors shadow-sm">
+                        <Upload className="size-5" />
+                        Upload Image
+                        <input id="file-input" type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
+                      </label>
+
+                      <button
+                        onClick={startCamera}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors shadow-sm"
+                      >
+                        <Camera className="size-5" />
+                        Capture Image
+                      </button>
+                    </div>
+
+                    <p className="text-sm text-gray-400 mt-6">Supports: JPG, PNG, JPEG (Max 10MB)</p>
                   </div>
                 )}
 

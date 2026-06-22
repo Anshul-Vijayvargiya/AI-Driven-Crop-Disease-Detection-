@@ -110,7 +110,7 @@ export function Login({ onNavigate }: LoginProps) {
     } catch (err) {
       setErrors({ general: "Network error. Please try again." });
     }*/
-   try {
+    try {
       if (isLogin) {
         const res = await apiClient.post("/auth/login", {
           email: formData.email,
@@ -119,12 +119,17 @@ export function Login({ onNavigate }: LoginProps) {
         localStorage.setItem("token", res.data.access_token);
         onNavigate("dashboard");
       } else {
-        const res = await apiClient.post("/auth/register", formData);
+        const res = await apiClient.post("/auth/register", {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          confirm_password: formData.confirmPassword,
+        });
         localStorage.setItem("token", res.data.access_token);
         onNavigate("dashboard");
       }
-    } catch (err) {
-      setErrors({ general: "Network error. Please try again." });
+    } catch (err: any) {
+      setErrors({ general: err.response?.data?.error || "Network error. Please try again." });
     }
   };
   return (

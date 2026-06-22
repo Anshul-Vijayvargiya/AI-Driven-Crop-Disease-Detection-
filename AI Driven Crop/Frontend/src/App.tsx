@@ -32,6 +32,15 @@ function App() {
   const [currentPage, setCurrentPage] = useState("landing");
   const [detectionResult, setDetectionResult] = useState<DetectionResult | null>(null);
 
+  // Enforce authentication for protected pages
+  useEffect(() => {
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    const protectedPages = ["dashboard", "detect", "results", "weather", "mandi"];
+    if (protectedPages.includes(currentPage) && !token) {
+      setCurrentPage("login");
+    }
+  }, [currentPage]);
+
   useEffect(() => {
     fetch("http://127.0.0.1:5000/api")
       .then((res) => res.json())
