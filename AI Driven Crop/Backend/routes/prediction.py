@@ -42,6 +42,11 @@ def predict():
     result = predict_disease(filepath)
 
     if result.get("error"):
+        print(f"Real AI model failed: {result.get('error')}. Falling back to mock_model...")
+        from mock_model import get_disease_recommendation
+        result = get_disease_recommendation(crop_name)
+
+    if result.get("error"):
         return jsonify(result), 404
 
     # If user is logged in, save the scan to DB

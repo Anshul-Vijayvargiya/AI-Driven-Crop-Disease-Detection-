@@ -127,36 +127,9 @@ export function Dashboard({ onNavigate }: DashboardProps) {
     },
   ];
 
-  const recentDetections = dashboardData?.recentDetections && dashboardData.recentDetections.length > 0
-    ? dashboardData.recentDetections
-    : [
-        { id: 1, disease: "Late Blight", crop: "Tomato", date: "2 hours ago", severity: "High", confidence: 92 },
-        { id: 2, disease: "Healthy", crop: "Wheat", date: "5 hours ago", severity: "None", confidence: 98 },
-        { id: 3, disease: "Leaf Rust", crop: "Wheat", date: "1 day ago", severity: "Medium", confidence: 87 },
-        { id: 4, disease: "Powdery Mildew", crop: "Cucumber", date: "1 day ago", severity: "Low", confidence: 83 },
-        { id: 5, disease: "Healthy", crop: "Rice", date: "2 days ago", severity: "None", confidence: 96 },
-      ];
-
-  const diseaseData = dashboardData?.diseaseData && dashboardData.diseaseData.length > 0
-    ? dashboardData.diseaseData
-    : [
-        { name: "Late Blight", value: 12, color: "#ef4444" },
-        { name: "Early Blight", value: 8, color: "#f97316" },
-        { name: "Leaf Rust", value: 6, color: "#f59e0b" },
-        { name: "Powdery Mildew", value: 5, color: "#eab308" },
-        { name: "Others", value: 3, color: "#84cc16" },
-      ];
-
-  const monthlyData = dashboardData?.monthlyData && dashboardData.monthlyData.length > 0
-    ? dashboardData.monthlyData
-    : [
-        { month: "Jan", scans: 45 },
-        { month: "Feb", scans: 52 },
-        { month: "Mar", scans: 61 },
-        { month: "Apr", scans: 58 },
-        { month: "May", scans: 67 },
-        { month: "Jun", scans: 72 },
-      ];
+  const recentDetections = dashboardData?.recentDetections || [];
+  const diseaseData = dashboardData?.diseaseData || [];
+  const monthlyData = dashboardData?.monthlyData || [];
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
@@ -275,7 +248,12 @@ export function Dashboard({ onNavigate }: DashboardProps) {
     </button>
   </div>
   <div className="space-y-4">
-    {recentDetections.map((detection) => (
+    {recentDetections.length === 0 ? (
+      <div className="text-center py-8 text-gray-500">
+        No recent detections found. Start scanning your crops!
+      </div>
+    ) : (
+      recentDetections.map((detection) => (
       <div
         key={detection.id}
         className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
@@ -322,7 +300,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           <Eye className="size-5 text-gray-600" />
         </button>
       </div>
-    ))}
+    )))}
   </div>
 </div>
           {/* Weather Widget */}
@@ -356,7 +334,12 @@ export function Dashboard({ onNavigate }: DashboardProps) {
             {/* Disease Frequency Pie Chart */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h2 className="text-gray-900 mb-6">Disease Distribution</h2>
-              <div className="h-64">
+              {diseaseData.length === 0 ? (
+                <div className="h-64 flex items-center justify-center text-gray-500">
+                  No data available yet
+                </div>
+              ) : (
+                <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -379,12 +362,18 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                   </PieChart>
                 </ResponsiveContainer>
               </div>
+              )}
             </div>
 
             {/* Monthly Scans Line Chart */}
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h2 className="text-gray-900 mb-6">Monthly Scan Activity</h2>
-              <div className="h-64">
+              {monthlyData.length === 0 ? (
+                <div className="h-64 flex items-center justify-center text-gray-500">
+                  No data available yet
+                </div>
+              ) : (
+                <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={monthlyData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -409,6 +398,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                   </LineChart>
                 </ResponsiveContainer>
               </div>
+              )}
             </div>
           </div>
 
