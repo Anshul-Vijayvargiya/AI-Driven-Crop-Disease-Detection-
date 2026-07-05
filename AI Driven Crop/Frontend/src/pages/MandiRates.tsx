@@ -138,7 +138,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
               </select>
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
               <div className="flex items-center gap-2 text-sm text-gray-600">
                 <Filter className="size-4" />
                 <span>{filteredData.length} results found</span>
@@ -180,8 +180,8 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
             </div>
 
             {/* Pagination */}
-            <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-                            <div className="flex items-center gap-2">
+            <div className="px-6 py-4 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-600">Show</span>
                 <select
                   value={itemsPerPage}

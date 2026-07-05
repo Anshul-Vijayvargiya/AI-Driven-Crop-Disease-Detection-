@@ -212,7 +212,7 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                     <p className="text-gray-500 mb-4">or</p>
                     
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      <label className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors shadow-sm">
+                      <label className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors shadow-sm w-full sm:w-auto">
                         <Upload className="size-5" />
                         Upload Image
                         <input id="file-input" type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
@@ -220,7 +220,7 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
 
                       <button
                         onClick={startCamera}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors shadow-sm"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors shadow-sm w-full sm:w-auto"
                       >
                         <Camera className="size-5" />
                         Capture Image
