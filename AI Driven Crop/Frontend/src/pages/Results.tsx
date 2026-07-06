@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Download, Share2, AlertTriangle, ChevronDown, ChevronUp, Scan, Leaf, Beaker, Shield } from 'lucide-react';
 import type { DetectionResult } from '../App';
 import { TreatmentModal } from '../components/TreatmentModal';
@@ -9,6 +10,7 @@ interface ResultsProps {
 }
 
 export function Results({ result, onNavigate }: ResultsProps) {
+  const { t } = useTranslation();
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [showTreatmentModal, setShowTreatmentModal] = useState(false);
 
@@ -16,12 +18,12 @@ export function Results({ result, onNavigate }: ResultsProps) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-white">
         <div className="text-center">
-          <p className="text-gray-600 mb-4">No detection results available</p>
+          <p className="text-gray-600 mb-4">{t('results.no_detection')}</p>
           <button
             onClick={() => onNavigate('detect')}
             className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
           >
-            Start New Detection
+            {t('results.start_new_detection')}
           </button>
         </div>
       </div>
@@ -42,10 +44,10 @@ export function Results({ result, onNavigate }: ResultsProps) {
   };
 
   const treatmentSections = [
-    { id: 'immediate', label: 'Immediate Actions', icon: AlertTriangle, items: result.treatments.immediate },
-    { id: 'organic', label: 'Organic Solutions', icon: Leaf, items: result.treatments.organic },
-    { id: 'chemical', label: 'Chemical Solutions', icon: Beaker, items: result.treatments.chemical },
-    { id: 'preventive', label: 'Preventive Measures', icon: Shield, items: result.treatments.preventive },
+    { id: 'immediate', label: t('results.immediate_actions'), icon: AlertTriangle, items: result.treatments.immediate },
+    { id: 'organic', label: t('results.organic_solutions'), icon: Leaf, items: result.treatments.organic },
+    { id: 'chemical', label: t('results.chemical_solutions'), icon: Beaker, items: result.treatments.chemical },
+    { id: 'preventive', label: t('results.preventive_measures'), icon: Shield, items: result.treatments.preventive },
   ];
 
   return (
@@ -67,9 +69,9 @@ export function Results({ result, onNavigate }: ResultsProps) {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-gray-900 mb-4">Detection Results</h1>
+            <h1 className="text-gray-900 mb-4">{t('results.title')}</h1>
             <p className="text-xl text-gray-600">
-              Analysis complete - Review the diagnosis and recommended treatments
+              {t('results.analysis_complete')}
             </p>
           </div>
 
@@ -93,17 +95,17 @@ export function Results({ result, onNavigate }: ResultsProps) {
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h2 className="text-gray-900 mb-2">{result.diseaseName}</h2>
-                    <p className="text-gray-600">Detected in {result.cropType}</p>
+                    <p className="text-gray-600">{t('results.detected_in')} {result.cropType}</p>
                   </div>
                   <span className={`px-3 py-1 rounded-full text-sm border ${getSeverityColor(result.severity)}`}>
-                    {result.severity} Severity
+                    {result.severity} {t('results.severity')}
                   </span>
                 </div>
 
                 {/* Confidence Score */}
                 <div className="mb-4">
                   <div className="flex justify-between text-sm text-gray-600 mb-2">
-                    <span>Confidence Score</span>
+                    <span>{t('results.confidence_score')}</span>
                     <span className="text-green-600">{result.confidence}%</span>
                   </div>
                   <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
@@ -123,7 +125,7 @@ export function Results({ result, onNavigate }: ResultsProps) {
                     onClick={() => setShowTreatmentModal(true)}
                     className="flex-1 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
                   >
-                    View Full Details
+                    {t('results.view_full_details')}
                   </button>
                   <button className="p-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
                     <Download className="size-5" />
@@ -136,7 +138,7 @@ export function Results({ result, onNavigate }: ResultsProps) {
 
               {/* Symptoms */}
               <div className="bg-white rounded-xl shadow-lg p-6">
-                <h3 className="text-gray-900 mb-4">Common Symptoms</h3>
+                <h3 className="text-gray-900 mb-4">{t('results.common_symptoms')}</h3>
                 <ul className="space-y-2">
                   {result.symptoms.map((symptom, index) => (
                     <li key={index} className="flex items-start gap-2 text-gray-700">
@@ -151,7 +153,7 @@ export function Results({ result, onNavigate }: ResultsProps) {
 
           {/* Treatment Recommendations */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-gray-900 mb-6">Treatment Recommendations</h2>
+            <h2 className="text-gray-900 mb-6">{t('results.treatment_recommendations')}</h2>
             <div className="space-y-4">
               {treatmentSections.map((section) => {
                 const Icon = section.icon;
@@ -168,7 +170,7 @@ export function Results({ result, onNavigate }: ResultsProps) {
                           <Icon className="size-5 text-green-600" />
                         </div>
                         <span className="text-gray-900">{section.label}</span>
-                        <span className="text-sm text-gray-500">({section.items.length} steps)</span>
+                        <span className="text-sm text-gray-500">({section.items.length} {t('results.steps')})</span>
                       </div>
                       {isExpanded ? (
                         <ChevronUp className="size-5 text-gray-600" />
@@ -204,13 +206,13 @@ export function Results({ result, onNavigate }: ResultsProps) {
               className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all transform hover:scale-105 shadow-lg flex items-center gap-2"
             >
               <Scan className="size-5" />
-              Analyze Another Image
+              {t('results.analyze_another_image')}
             </button>
             <button
               onClick={() => onNavigate('dashboard')}
               className="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
             >
-              Back to Dashboard
+              {t('results.back_to_dashboard')}
             </button>
           </div>
         </div>

@@ -1,10 +1,12 @@
 // src/pages/MandiRates.tsx
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { fetchMandiRates, fetchStates, fetchCommodities } from "../services/mandiServices";
 import { Search, Download, Filter, ChevronLeft, ChevronRight } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
 export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNavigate }) => {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("all");
   const [selectedCommodity, setSelectedCommodity] = useState("all");
@@ -84,7 +86,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
     avgPrice: Number(item.modal_price),
   }));
 
-  if (loading) return <p>Loading real-time mandi rates...</p>;
+  if (loading) return <p>{t('mandi.loading', 'Loading real-time mandi rates...')}</p>;
 
   return (
     <div className="min-h-screen py-12 bg-gradient-to-b from-orange-50 to-white">
@@ -92,8 +94,8 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-gray-900 mb-4">📊 Mandi Rates Dashboard</h1>
-            <p className="text-xl text-gray-600">Track and analyze live commodity prices across India</p>
+            <h1 className="text-gray-900 mb-4">📊 {t('mandi.title', 'Mandi Rates Dashboard')}</h1>
+            <p className="text-xl text-gray-600">{t('mandi.subtitle', 'Track and analyze live commodity prices across India')}</p>
           </div>
 
           {/* Filters Section */}
@@ -105,7 +107,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
                   <input
                     type="text"
-                    placeholder="Search commodity or market..."
+                    placeholder={t('mandi.searchPlaceholder', 'Search commodity or market...')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -119,7 +121,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
                 onChange={(e) => setSelectedState(e.target.value)}
                 className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               >
-                <option value="all">All States</option>
+                <option value="all">{t('mandi.allStates', 'All States')}</option>
                 {states.map((s) => (
                   <option key={s} value={s}>{s}</option>
                 ))}
@@ -131,7 +133,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
                 onChange={(e) => setSelectedCommodity(e.target.value)}
                 className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               >
-                <option value="all">All Commodities</option>
+                <option value="all">{t('mandi.allCommodities', 'All Commodities')}</option>
                 {commodities.map((c) => (
                   <option key={c} value={c}>{c}</option>
                 ))}
@@ -141,11 +143,11 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
             <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
               <div className="flex items-center gap-2 text-sm text-gray-600">
                 <Filter className="size-4" />
-                <span>{filteredData.length} results found</span>
+                <span>{filteredData.length} {t('mandi.resultsFound', 'results found')}</span>
               </div>
               <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2">
                 <Download className="size-4" />
-                Export to Excel
+                {t('mandi.exportExcel', 'Export to Excel')}
               </button>
             </div>
           </div>
@@ -156,12 +158,12 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="px-6 py-4 text-left cursor-pointer" onClick={() => handleSort("commodity")}>Commodity</th>
-                    <th className="px-6 py-4 text-left">Market/Mandi</th>
-                    <th className="px-6 py-4 text-right cursor-pointer" onClick={() => handleSort("min_price")}>Min Price (₹/qtl)</th>
-                    <th className="px-6 py-4 text-right cursor-pointer" onClick={() => handleSort("max_price")}>Max Price (₹/qtl)</th>
-                    <th className="px-6 py-4 text-right cursor-pointer" onClick={() => handleSort("modal_price")}>Modal Price (₹/qtl)</th>
-                    <th className="px-6 py-4 text-left">State</th>
+                    <th className="px-6 py-4 text-left cursor-pointer" onClick={() => handleSort("commodity")}>{t('mandi.table.commodity', 'Commodity')}</th>
+                    <th className="px-6 py-4 text-left">{t('mandi.table.market', 'Market/Mandi')}</th>
+                    <th className="px-6 py-4 text-right cursor-pointer" onClick={() => handleSort("min_price")}>{t('mandi.table.minPrice', 'Min Price (₹/qtl)')}</th>
+                    <th className="px-6 py-4 text-right cursor-pointer" onClick={() => handleSort("max_price")}>{t('mandi.table.maxPrice', 'Max Price (₹/qtl)')}</th>
+                    <th className="px-6 py-4 text-right cursor-pointer" onClick={() => handleSort("modal_price")}>{t('mandi.table.modalPrice', 'Modal Price (₹/qtl)')}</th>
+                    <th className="px-6 py-4 text-left">{t('mandi.table.state', 'State')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -182,7 +184,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
             {/* Pagination */}
             <div className="px-6 py-4 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">Show</span>
+                <span className="text-sm text-gray-600">{t('mandi.pagination.show', 'Show')}</span>
                 <select
                   value={itemsPerPage}
                   onChange={(e) => {
@@ -195,7 +197,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
                   <option value={25}>25</option>
                   <option value={50}>50</option>
                 </select>
-                <span className="text-sm text-gray-600">entries</span>
+                <span className="text-sm text-gray-600">{t('mandi.pagination.entries', 'entries')}</span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -207,7 +209,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
                   <ChevronLeft className="size-4" />
                 </button>
                 <span className="text-sm text-gray-600">
-                  Page {currentPage} of {totalPages}
+                  {t('mandi.pagination.pageOf', { current: currentPage, total: totalPages, defaultValue: `Page ${currentPage} of ${totalPages}` })}
                 </span>
                 <button
                   onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
@@ -222,7 +224,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
 
           {/* Price Comparison Chart */}
           <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-gray-900 mb-6">Price Comparison Across Markets</h2>
+            <h2 className="text-gray-900 mb-6">{t('mandi.chartTitle', 'Price Comparison Across Markets')}</h2>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData}>
@@ -240,7 +242,7 @@ export const MandiRates: React.FC<{ onNavigate?: (page: string) => void }> = ({ 
                   <Bar
                     dataKey="avgPrice"
                     fill="#10b981"
-                    name="Average Price (₹/qtl)"
+                    name={t('mandi.chartAvgPrice', 'Average Price (₹/qtl)')}
                     radius={[8, 8, 0, 0]}
                   />
                 </BarChart>

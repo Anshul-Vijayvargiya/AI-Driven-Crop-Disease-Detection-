@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
-import { Menu, X, Leaf, User } from "lucide-react";
+import { Menu, X, Leaf, User, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface HeaderProps {
   currentPage: string;
@@ -11,26 +12,44 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<{ name: string; email: string } | null>(null);
   const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+
+  const { t, i18n } = useTranslation();
 
   const token = localStorage.getItem("token") || sessionStorage.getItem("token");
   const isAuthenticated = !!token || !!user;
 
   const menuItems = [
-    { id: "landing", label: "Home" },
+    { id: "landing", label: t("nav.home") },
     ...(isAuthenticated ? [
-      { id: "dashboard", label: "Dashboard" },
-      { id: "detect", label: "Detect Disease" },
-      { id: "weather", label: "Weather" },
-      { id: "mandi", label: "Market Prices" },
+      { id: "dashboard", label: t("nav.dashboard") },
+      { id: "detect", label: t("nav.detect") },
+      { id: "weather", label: t("nav.weather") },
+      { id: "mandi", label: t("nav.mandi") },
     ] : []),
-    { id: "how-it-works", label: "How It Works" },
+    { id: "how-it-works", label: t("nav.how_it_works") },
   ];
 
   const handleNavigation = (page: string) => {
     onNavigate(page);
     setMobileMenuOpen(false);
     setOpen(false); // ✅ close dropdown when navigating
+    setLangOpen(false);
   };
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setLangOpen(false);
+  };
+
+  const languages = [
+    { code: "en", name: t("languages.en") },
+    { code: "hi", name: t("languages.hi") },
+    { code: "mr", name: t("languages.mr") },
+    { code: "gu", name: t("languages.gu") },
+    { code: "pa", name: t("languages.pa") },
+    { code: "ta", name: t("languages.ta") }
+  ];
 
   // Fetch current user when page changes
   useEffect(() => {
@@ -65,7 +84,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
             <div className="bg-green-600 p-2 rounded-lg">
               <Leaf className="size-6 text-white" />
             </div>
-            <span className="text-green-900">AgriCare AI</span>
+            <span className="text-green-900">{t("header.title")}</span>
           </button>
 
           {/* Desktop Menu */}
@@ -86,8 +105,33 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
             ))}
           </div>
 
-          {/* User Menu (desktop) */}
+          {/* User & Lang Menu (desktop) */}
           <div className="hidden md:flex items-center gap-4">
+            
+            {/* Language Switcher */}
+            <div className="relative">
+              <button
+                onClick={() => { setLangOpen(!langOpen); setOpen(false); }}
+                className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-green-600 transition"
+              >
+                <Globe className="size-5" />
+                <span className="text-sm font-medium uppercase">{i18n.language || "en"}</span>
+              </button>
+              {langOpen && (
+                <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-200 z-50 py-1">
+                  {languages.map((lng) => (
+                    <button
+                      key={lng.code}
+                      onClick={() => changeLanguage(lng.code)}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-green-50 ${i18n.language === lng.code ? 'text-green-600 font-semibold' : 'text-gray-700'}`}
+                    >
+                      {lng.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {user ? (
               <div className="relative">
                 <button
@@ -108,7 +152,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 {open && (
                   <div className="absolute right-0 mt-2 w-44 bg-white text-gray-800 rounded-lg shadow-lg border border-gray-200 z-50">
                     <div className="px-4 py-2 text-xs text-gray-500">
-                      Signed in as<br />
+                      {t("header.signed_in_as")}<br />
                       <span className="font-medium">{user.email}</span>
                     </div>
                     <div className="border-t border-gray-200" />
@@ -116,13 +160,13 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                       onClick={() => handleNavigation("dashboard")}
                       className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                     >
-                      Dashboard
+                      {t("nav.dashboard")}
                     </button>
                     <button
                       onClick={logout}
                       className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
                     >
-                      Logout
+                      {t("header.logout")}
                     </button>
                   </div>
                 )}
@@ -132,7 +176,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 onClick={() => handleNavigation("login")}
                 className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
               >
-                Sign In
+                {t("header.sign_in")}
               </button>
             )}
           </div>
@@ -175,25 +219,41 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                     className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
                   >
                     <User className="size-5" />
-                    Dashboard
+                    {t("nav.dashboard")}
                   </button>
                   <button
                     onClick={logout}
                     className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                   >
                     <User className="size-5" />
-                    Logout
+                    {t("header.logout")}
                   </button>
                 </>
               ) : (
-                <button
+                  <button
                   onClick={() => handleNavigation("login")}
                   className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
                 >
                   <User className="size-5" />
-                  Sign In
+                  {t("header.sign_in")}
                 </button>
               )}
+
+              {/* Mobile Language Switcher */}
+              <div className="border-t border-gray-200 pt-4 mt-2">
+                <p className="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">{t("header.language", "Language")}</p>
+                <div className="flex flex-wrap gap-2 px-4">
+                  {languages.map((lng) => (
+                    <button
+                      key={lng.code}
+                      onClick={() => changeLanguage(lng.code)}
+                      className={`px-3 py-1 rounded-full text-sm border ${i18n.language === lng.code ? 'bg-green-100 border-green-600 text-green-700' : 'border-gray-300 text-gray-600 hover:bg-gray-50'}`}
+                    >
+                      {lng.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         )}

@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { Upload, Camera, AlertCircle, X, CheckCircle, Leaf } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { LoadingAnimation } from '../components/LoadingAnimation';
 import { ErrorState } from '../components/ErrorStates';
 import type { DetectionResult } from '../App';
@@ -12,6 +13,7 @@ interface DiseaseDetectionProps {
 }
 
 export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDetectionProps) {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -142,9 +144,9 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-gray-900 mb-4">Detect Crop Diseases</h1>
+            <h1 className="text-gray-900 mb-4">{t('disease_detection.title')}</h1>
             <p className="text-xl text-gray-600">
-              Upload a clear photo of your crop leaves for instant AI-powered disease detection
+              {t('disease_detection.subtitle')}
             </p>
           </div>
 
@@ -168,7 +170,7 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                     </div>
                     <div className="flex items-center gap-2 text-sm text-green-600">
                       <CheckCircle className="w-5 h-5" />
-                      <span>Image uploaded successfully</span>
+                      <span>{t('disease_detection.upload_success')}</span>
                     </div>
                   </div>
                 )}
@@ -184,14 +186,14 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                         className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors flex items-center gap-2"
                       >
                         <Camera className="w-5 h-5" />
-                        Take Photo
+                        {t('disease_detection.take_photo')}
                       </button>
                       <button
                         onClick={stopCamera}
                         className="px-6 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors flex items-center gap-2"
                       >
                         <X className="w-5 h-5" />
-                        Cancel
+                        {t('disease_detection.cancel')}
                       </button>
                     </div>
                   </div>
@@ -208,13 +210,13 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                     }`}
                   >
                     <Camera className="size-16 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-900 mb-2">Drag and drop your image here</p>
-                    <p className="text-gray-500 mb-4">or</p>
+                    <p className="text-gray-900 mb-2">{t('disease_detection.drag_drop')}</p>
+                    <p className="text-gray-500 mb-4">{t('disease_detection.or')}</p>
                     
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                       <label className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-colors shadow-sm w-full sm:w-auto">
                         <Upload className="size-5" />
-                        Upload Image
+                        {t('disease_detection.upload_image')}
                         <input id="file-input" type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
                       </label>
 
@@ -223,11 +225,11 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors shadow-sm w-full sm:w-auto"
                       >
                         <Camera className="size-5" />
-                        Capture Image
+                        {t('disease_detection.capture_image')}
                       </button>
                     </div>
 
-                    <p className="text-sm text-gray-400 mt-6">Supports: JPG, PNG, JPEG (Max 10MB)</p>
+                    <p className="text-sm text-gray-400 mt-6">{t('disease_detection.supports')}</p>
                   </div>
                 )}
 
@@ -235,7 +237,7 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                 {selectedImage && (
                   <input
                     type="text"
-                    placeholder="Enter crop name (optional)"
+                    placeholder={t('disease_detection.enter_crop_name')}
                     value={crop}
                     onChange={(e) => setCrop(e.target.value)}
                     className="mt-4 w-full border rounded-lg p-2"
@@ -250,7 +252,7 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                     className="w-full mt-6 px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
                   >
                     <Leaf className="size-5" />
-                    Analyze Image
+                    {t('disease_detection.analyze_image')}
                   </button>
                 )}
               </div>
@@ -264,18 +266,18 @@ export function DiseaseDetection({ onDetectionComplete, onNavigate }: DiseaseDet
                     <AlertCircle className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-gray-900 mb-2">For Best Results</h3>
+                    <h3 className="text-gray-900 mb-2">{t('disease_detection.best_results')}</h3>
                   </div>
                 </div>
 
                 <ul className="space-y-3">
                   {[
-                    "Take photos in natural daylight",
-                    "Focus on affected leaf areas",
-                    "Ensure image is clear and not blurry",
-                    "Include full leaf in frame",
-                    "Avoid shadows and reflections",
-                    "Take multiple angles if needed",
+                    t('disease_detection.tips.tip_1'),
+                    t('disease_detection.tips.tip_2'),
+                    t('disease_detection.tips.tip_3'),
+                    t('disease_detection.tips.tip_4'),
+                    t('disease_detection.tips.tip_5'),
+                    t('disease_detection.tips.tip_6'),
                   ].map((tip, index) => (
                     <li
                       key={index}

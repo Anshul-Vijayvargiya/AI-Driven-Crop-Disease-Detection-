@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { getWeather, getForecast, getHourly, getCropAlerts } from "../services/weatherService";
 import {
   Droplets,
@@ -32,6 +33,7 @@ function getWeatherIcon(condition: string) {
 }
 
 export function Weather({ onNavigate }: WeatherProps) {
+  const { t } = useTranslation();
   const [selectedLocation, setSelectedLocation] = useState("Indore");
   const [selectedCrop, setSelectedCrop] = useState("tomato");
   const [currentWeather, setCurrentWeather] = useState<any>(null);
@@ -67,9 +69,9 @@ export function Weather({ onNavigate }: WeatherProps) {
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-gray-900 mb-4">Weather Dashboard</h1>
+          <h1 className="text-gray-900 mb-4">{t('weather.title', 'Weather Dashboard')}</h1>
           <p className="text-xl text-gray-600 mb-6">
-            Real-time weather data and crop-specific farming advice
+            {t('weather.subtitle', 'Real-time weather data and crop-specific farming advice')}
           </p>
 
           {/* Location Selector */}
@@ -80,23 +82,23 @@ export function Weather({ onNavigate }: WeatherProps) {
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
               className="flex-1 outline-none text-gray-900"
-              placeholder="Enter location..."
+              placeholder={t('weather.enterLocation', 'Enter location...')}
             />
           </div>
 
           {/* Crop Selector */}
           <div className="flex items-center gap-2 bg-white p-4 rounded-lg shadow-md max-w-md">
-            <label className="text-gray-600">Crop:</label>
+            <label className="text-gray-600">{t('weather.crop', 'Crop:')}</label>
             <select
               value={selectedCrop}
               onChange={(e) => setSelectedCrop(e.target.value)}
               className="flex-1 outline-none text-gray-900"
             >
-              <option value="tomato">Tomato</option>
-              <option value="potato">Potato</option>
-              <option value="apple">Apple</option>
-              <option value="rice">Rice</option>
-              <option value="cotton">Cotton</option>
+              <option value="tomato">{t('weather.crops.tomato', 'Tomato')}</option>
+              <option value="potato">{t('weather.crops.potato', 'Potato')}</option>
+              <option value="apple">{t('weather.crops.apple', 'Apple')}</option>
+              <option value="rice">{t('weather.crops.rice', 'Rice')}</option>
+              <option value="cotton">{t('weather.crops.cotton', 'Cotton')}</option>
             </select>
           </div>
         </div>
@@ -123,7 +125,7 @@ export function Weather({ onNavigate }: WeatherProps) {
                     <p className="text-amber-800 mb-2">{alert.message}</p>
                     {alert.recommendation && (
                       <p className="text-sm text-amber-700">
-                        <strong>Recommendation:</strong> {alert.recommendation}
+                        <strong>{t('weather.recommendation', 'Recommendation:')}</strong> {alert.recommendation}
                       </p>
                     )}
                   </div>
@@ -138,12 +140,12 @@ export function Weather({ onNavigate }: WeatherProps) {
         {currentWeather ? (
           <WeatherCard weather={currentWeather} />
         ) : (
-          <p className="text-gray-600">Loading weather...</p>
+          <p className="text-gray-600">{t('weather.loading', 'Loading weather...')}</p>
         )}
 
         {/* 7-Day Forecast */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-gray-900 mb-6">6-Day Forecast</h2>
+          <h2 className="text-gray-900 mb-6">{t('weather.forecast6Day', '6-Day Forecast')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {forecast.map((day, index) => (
               <div
@@ -169,7 +171,7 @@ export function Weather({ onNavigate }: WeatherProps) {
 
         {/* Hourly Temperature Chart */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 className="text-gray-900 mb-6">24-Hour Temperature Forecast</h2>
+          <h2 className="text-gray-900 mb-6">{t('weather.hourlyForecast', '24-Hour Temperature Forecast')}</h2>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={hourlyData}>

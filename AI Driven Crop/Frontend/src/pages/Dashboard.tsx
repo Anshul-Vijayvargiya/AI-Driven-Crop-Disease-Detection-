@@ -24,6 +24,7 @@ import {
   Legend,
 } from "recharts";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import apiClient from "../services/apiClient";
 
 interface DashboardProps {
@@ -50,6 +51,7 @@ interface DashboardStats {
 }
 
 export function Dashboard({ onNavigate }: DashboardProps) {
+  const { t } = useTranslation();
   const [user, setUser] = useState<User | null>(null);
   const [dashboardData, setDashboardData] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -86,15 +88,15 @@ export function Dashboard({ onNavigate }: DashboardProps) {
   };
 
   const tips = [
-    "Regular monitoring helps detect diseases early",
-    "Ensure proper drainage to prevent fungal infections",
-    "Rotate crops every season to reduce disease risk",
-    "Apply organic fertilizers for stronger plant immunity",
+    t("dashboard.tip_1"),
+    t("dashboard.tip_2"),
+    t("dashboard.tip_3"),
+    t("dashboard.tip_4"),
   ];
 
   const defaultStats = [
     {
-      label: "Total Scans",
+      label: t("dashboard.total_scans"),
       value: dashboardData?.stats.totalScans.toString() || "0",
       change: "+0%",
       icon: Scan,
@@ -102,7 +104,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
       textColor: "text-blue-600",
     },
     {
-      label: "Diseases Detected",
+      label: t("dashboard.diseases_detected"),
       value: dashboardData?.stats.diseasesDetected.toString() || "0",
       change: "-0%",
       icon: AlertTriangle,
@@ -110,7 +112,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
       textColor: "text-red-600",
     },
     {
-      label: "Healthy Crops",
+      label: t("dashboard.healthy_crops"),
       value: dashboardData?.stats.healthyCrops.toString() || "0",
       change: "+0%",
       icon: CheckCircle,
@@ -118,7 +120,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
       textColor: "text-green-600",
     },
     {
-      label: "Accuracy Rate",
+      label: t("dashboard.accuracy_rate"),
       value: `${dashboardData?.stats.accuracyRate || 0}%`,
       change: "+0%",
       icon: TrendingUp,
@@ -160,12 +162,12 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           <div className="mb-8 flex items-center justify-between">
             <div>
               <h1 className="text-gray-900 mb-2">
-                {user ? `Welcome, ${user.name} 👩‍🌾` : "Dashboard"}
+                {user ? t("dashboard.welcome", { name: user.name }) : t("dashboard.title")}
               </h1>
               <p className="text-xl text-gray-600">
                 {user
-                  ? `Role: ${user.role} • Here are your agricultural insights`
-                  : "Welcome back! Here's your agricultural insights overview"}
+                  ? t("dashboard.role_insights", { role: user.role })
+                  : t("dashboard.guest_insights")}
               </p>
             </div>
             <button
@@ -173,7 +175,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
               className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
             >
               <LogOut className="size-5" />
-              Logout
+              {t("header.logout", "Logout")}
             </button>
           </div>
 
@@ -207,31 +209,31 @@ export function Dashboard({ onNavigate }: DashboardProps) {
 
           {/* Quick Actions */}
           <div className="bg-gradient-to-br from-green-600 to-green-800 rounded-xl shadow-xl p-8 mb-8 text-white">
-            <h2 className="mb-6">Quick Actions</h2>
+            <h2 className="mb-6">{t("dashboard.quick_actions")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <button
                 onClick={() => onNavigate("detect")}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 hover:bg-white/20 transition-all text-left group"
               >
                 <Scan className="size-8 mb-3 group-hover:scale-110 transition-transform" />
-                <div className="mb-2">New Detection</div>
-                <div className="text-sm text-green-100">Upload crop image for analysis</div>
+                <div className="mb-2">{t("dashboard.new_detection")}</div>
+                <div className="text-sm text-green-100">{t("dashboard.upload_crop_image")}</div>
               </button>
               <button
                 onClick={() => onNavigate("weather")}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 hover:bg-white/20 transition-all text-left group"
               >
                 <Cloud className="size-8 mb-3 group-hover:scale-110 transition-transform" />
-                <div className="mb-2">Check Weather</div>
-                <div className="text-sm text-green-100">View forecast and alerts</div>
+                <div className="mb-2">{t("dashboard.check_weather")}</div>
+                <div className="text-sm text-green-100">{t("dashboard.view_forecast")}</div>
               </button>
               <button
                 onClick={() => onNavigate("mandi")}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 hover:bg-white/20 transition-all text-left group"
               >
                 <DollarSign className="size-8 mb-3 group-hover:scale-110 transition-transform" />
-                <div className="mb-2">Market Prices</div>
-                <div className="text-sm text-green-100">View latest Mandi rates</div>
+                <div className="mb-2">{t("dashboard.market_prices")}</div>
+                <div className="text-sm text-green-100">{t("dashboard.view_mandi_rates")}</div>
               </button>
             </div>
           </div>
@@ -239,18 +241,18 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           {/* Recent Detections */}
 <div className="lg:col-span-2 bg-white rounded-xl shadow-lg p-6 mb-8">
   <div className="flex items-center justify-between mb-6">
-    <h2 className="text-gray-900">Recent Detections</h2>
+    <h2 className="text-gray-900">{t("dashboard.recent_detections")}</h2>
     <button
       onClick={() => onNavigate("detect")}
       className="text-sm text-green-600 hover:text-green-700"
     >
-      View All
+      {t("dashboard.view_all")}
     </button>
   </div>
   <div className="space-y-4">
     {recentDetections.length === 0 ? (
       <div className="text-center py-8 text-gray-500">
-        No recent detections found. Start scanning your crops!
+        {t("dashboard.no_recent")}
       </div>
     ) : (
       recentDetections.map((detection) => (
@@ -278,7 +280,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
             )}
           </div>
           <div className="text-sm text-gray-600">
-            {detection.crop} • {detection.confidence}% confidence
+            {detection.crop} • {detection.confidence}% {t("dashboard.confidence")}
           </div>
         </div>
 
@@ -307,17 +309,17 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           <div className="bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl shadow-lg p-6 text-white mb-8">
             <div className="flex items-center gap-2 mb-4">
               <Cloud className="size-5" />
-              <h3>Current Weather</h3>
+              <h3>{t("dashboard.current_weather")}</h3>
             </div>
             <div className="text-5xl mb-2">28°</div>
-            <div className="text-blue-100 mb-4">Partly Cloudy</div>
+            <div className="text-blue-100 mb-4">{t("dashboard.partly_cloudy")}</div>
             <div className="space-y-2 mb-4">
               <div className="flex justify-between text-sm">
-                <span className="text-blue-100">Humidity</span>
+                <span className="text-blue-100">{t("dashboard.humidity")}</span>
                 <span>65%</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-blue-100">Wind</span>
+                <span className="text-blue-100">{t("dashboard.wind")}</span>
                 <span>12 km/h</span>
               </div>
             </div>
@@ -325,7 +327,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
               onClick={() => onNavigate("weather")}
               className="w-full py-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors"
             >
-              View Full Forecast
+              {t("dashboard.view_full_forecast")}
             </button>
           </div>
 
@@ -333,10 +335,10 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Disease Frequency Pie Chart */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-gray-900 mb-6">Disease Distribution</h2>
+              <h2 className="text-gray-900 mb-6">{t("dashboard.disease_distribution")}</h2>
               {diseaseData.length === 0 ? (
                 <div className="h-64 flex items-center justify-center text-gray-500">
-                  No data available yet
+                  {t("dashboard.no_data")}
                 </div>
               ) : (
                 <div className="h-64">
@@ -367,10 +369,10 @@ export function Dashboard({ onNavigate }: DashboardProps) {
 
             {/* Monthly Scans Line Chart */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-gray-900 mb-6">Monthly Scan Activity</h2>
+              <h2 className="text-gray-900 mb-6">{t("dashboard.monthly_scan_activity")}</h2>
               {monthlyData.length === 0 ? (
                 <div className="h-64 flex items-center justify-center text-gray-500">
-                  No data available yet
+                  {t("dashboard.no_data")}
                 </div>
               ) : (
                 <div className="h-64">
@@ -404,7 +406,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
 
           {/* Tips of the Day */}
           <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl shadow-lg p-8 border border-amber-200">
-            <h2 className="text-gray-900 mb-6">Farming Tips</h2>
+            <h2 className="text-gray-900 mb-6">{t("dashboard.farming_tips")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {tips.map((tip, index) => (
                 <div

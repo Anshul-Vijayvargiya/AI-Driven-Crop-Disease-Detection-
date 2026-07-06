@@ -12,12 +12,14 @@ import {
 } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import apiClient from "../services/apiClient";
+import { useTranslation } from "react-i18next";
 
 interface LoginProps {
   onNavigate: (page: string) => void;
 }
 
 export function Login({ onNavigate }: LoginProps) {
+  const { t } = useTranslation();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -148,12 +150,12 @@ export function Login({ onNavigate }: LoginProps) {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-gray-900 mb-2">
-              {isLogin ? "Welcome Back!" : "Create Account"}
+              {isLogin ? t('login.welcomeBack', 'Welcome Back!') : t('login.createAccount', 'Create Account')}
             </h1>
             <p className="text-gray-600">
               {isLogin
-                ? "Sign in to access your agricultural dashboard"
-                : "Join 50,000+ farmers using AI to protect their crops"}
+                ? t('login.signInDesc', 'Sign in to access your agricultural dashboard')
+                : t('login.joinDesc', 'Join 50,000+ farmers using AI to protect their crops')}
             </p>
           </div>
 
@@ -161,11 +163,11 @@ export function Login({ onNavigate }: LoginProps) {
           <div className="space-y-3 mb-6">
             <button className="w-full flex items-center justify-center gap-3 px-4 py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
               <Chrome className="size-5 text-gray-700" />
-              <span className="text-gray-700">Continue with Google</span>
+              <span className="text-gray-700">{t('login.continueWithGoogle', 'Continue with Google')}</span>
             </button>
             <button className="w-full flex items-center justify-center gap-3 px-4 py-3 border-2 border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
               <Facebook className="size-5 text-blue-600" />
-              <span className="text-gray-700">Continue with Facebook</span>
+              <span className="text-gray-700">{t('login.continueWithFacebook', 'Continue with Facebook')}</span>
             </button>
           </div>
 
@@ -176,7 +178,7 @@ export function Login({ onNavigate }: LoginProps) {
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="px-4 bg-white text-gray-500">
-                Or continue with email
+                {t('login.orContinue', 'Or continue with email')}
               </span>
             </div>
           </div>
@@ -186,7 +188,7 @@ export function Login({ onNavigate }: LoginProps) {
             {!isLogin && (
               <div>
                 <label className="block text-sm text-gray-700 mb-2">
-                  Full Name
+                  {t('login.fullName', 'Full Name')}
                 </label>
                 <input
                   type="text"
@@ -196,7 +198,7 @@ export function Login({ onNavigate }: LoginProps) {
                   className={`w-full px-4 py-3 border-2 ${
                     errors.name ? "border-red-300" : "border-gray-200"
                   } rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all`}
-                  placeholder="Enter your full name"
+                  placeholder={t('login.enterFullName', 'Enter your full name')}
                 />
                 {errors.name && (
                   <div className="flex items-center gap-1 mt-1 text-sm text-red-600">
@@ -210,7 +212,7 @@ export function Login({ onNavigate }: LoginProps) {
             {/* Email */}
             <div>
               <label className="block text-sm text-gray-700 mb-2">
-                Email Address
+                {t('login.emailAddress', 'Email Address')}
               </label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
@@ -222,7 +224,7 @@ export function Login({ onNavigate }: LoginProps) {
                   className={`w-full pl-12 pr-4 py-3 border-2 ${
                     errors.email ? "border-red-300" : "border-gray-200"
                   } rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all`}
-                  placeholder="Enter your email"
+                  placeholder={t('login.enterEmail', 'Enter your email')}
                 />
               </div>
               {errors.email && (
@@ -235,7 +237,7 @@ export function Login({ onNavigate }: LoginProps) {
 
             {/* Password */}
             <div>
-              <label className="block text-sm text-gray-700 mb-2">Password</label>
+              <label className="block text-sm text-gray-700 mb-2">{t('login.password', 'Password')}</label>
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
                 <input
@@ -246,7 +248,7 @@ export function Login({ onNavigate }: LoginProps) {
                   className={`w-full pl-12 pr-12 py-3 border-2 ${
                     errors.password ? "border-red-300" : "border-gray-200"
                   } rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all`}
-                  placeholder="Enter your password"
+                  placeholder={t('login.enterPassword', 'Enter your password')}
                 />
                 <button
                   type="button"
@@ -267,7 +269,7 @@ export function Login({ onNavigate }: LoginProps) {
             {/* Confirm Password - Only for signup */}
             {!isLogin && (
               <div>
-                <label className="block text-sm text-gray-700 mb-2">Confirm Password</label>
+                <label className="block text-sm text-gray-700 mb-2">{t('login.confirmPassword', 'Confirm Password')}</label>
                 <div className="relative">
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
                   <input
@@ -278,7 +280,7 @@ export function Login({ onNavigate }: LoginProps) {
                     className={`w-full pl-12 pr-4 py-3 border-2 ${
                       errors.confirmPassword ? "border-red-300" : "border-gray-200"
                     } rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all`}
-                    placeholder="Confirm your password"
+                    placeholder={t('login.confirmYourPassword', 'Confirm your password')}
                   />
                 </div>
                 {errors.confirmPassword && (
@@ -300,14 +302,14 @@ export function Login({ onNavigate }: LoginProps) {
                     onChange={(e) => setRememberMe(e.target.checked)}
                     className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
                   />
-                  <span className="text-sm text-gray-700">Remember me</span>
+                  <span className="text-sm text-gray-700">{t('login.rememberMe', 'Remember me')}</span>
                 </label>
                 <button
                   type="button"
                   onClick={() => onNavigate("forgot-password")}
                   className="text-sm text-green-600 hover:text-green-700"
                 >
-                  Forgot password?
+                  {t('login.forgotPassword', 'Forgot password?')}
                 </button>
               </div>
             )}
@@ -320,13 +322,13 @@ export function Login({ onNavigate }: LoginProps) {
                   className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-1"
                 />
                 <span className="text-sm text-gray-700">
-                  I agree to the{" "}
+                  {t('login.agreeTo', 'I agree to the')}{" "}
                   <button type="button" className="text-green-600 hover:text-green-700">
-                    Terms of Service
+                    {t('login.termsOfService', 'Terms of Service')}
                   </button>{" "}
-                  and{" "}
+                  {t('login.and', 'and')}{" "}
                   <button type="button" className="text-green-600 hover:text-green-700">
-                    Privacy Policy
+                    {t('login.privacyPolicy', 'Privacy Policy')}
                   </button>
                 </span>
               </label>
@@ -337,7 +339,7 @@ export function Login({ onNavigate }: LoginProps) {
               type="submit"
               className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2"
             >
-              <span className="text-lg">{isLogin ? "Sign In" : "Create Account"}</span>
+              <span className="text-lg">{isLogin ? t('login.signIn', 'Sign In') : t('login.createAccountButton', 'Create Account')}</span>
               <ArrowRight className="size-5" />
             </button>
 
@@ -353,13 +355,13 @@ export function Login({ onNavigate }: LoginProps) {
           {/* Toggle Login/Signup */}
           <div className="mt-6 text-center">
             <span className="text-gray-600">
-              {isLogin ? "Don't have an account?" : "Already have an account?"}
+              {isLogin ? t('login.dontHaveAccount', "Don't have an account?") : t('login.alreadyHaveAccount', "Already have an account?")}
             </span>{" "}
             <button
               onClick={toggleMode}
               className="text-green-600 hover:text-green-700"
             >
-              {isLogin ? "Sign up" : "Sign in"}
+              {isLogin ? t('login.signUp', "Sign up") : t('login.signIn', "Sign in")}
             </button>
           </div>
 
@@ -369,7 +371,7 @@ export function Login({ onNavigate }: LoginProps) {
               onClick={() => onNavigate("landing")}
               className="text-sm text-gray-500 hover:text-gray-700"
             >
-              ← Back to home
+              {t('login.backToHome', '← Back to home')}
             </button>
           </div>
         </div>
@@ -392,25 +394,25 @@ export function Login({ onNavigate }: LoginProps) {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center p-12 text-white">
-          <h2 className="mb-6 text-5xl">Join the Future of Farming</h2>
+          <h2 className="mb-6 text-5xl">{t('login.joinFuture', 'Join the Future of Farming')}</h2>
           <p className="text-2xl text-green-100 mb-12 leading-relaxed">
-            Access powerful AI tools to protect your crops, monitor weather, and track market prices all in one place.
+            {t('login.accessAiTools', 'Access powerful AI tools to protect your crops, monitor weather, and track market prices all in one place.')}
           </p>
 
           {/* Features */}
           <div className="space-y-6">
             {[
               {
-                title: "95% Accuracy",
-                description: "AI-powered disease detection validated by experts",
+                title: t('login.accuracyTitle', "95% Accuracy"),
+                description: t('login.accuracyDesc', "AI-powered disease detection validated by experts"),
               },
               {
-                title: "50,000+ Farmers",
-                description: "Trusted by farmers across India",
+                title: t('login.farmersTitle', "50,000+ Farmers"),
+                description: t('login.farmersDesc', "Trusted by farmers across India"),
               },
               {
-                title: "24/7 Access",
-                description: "Monitor your crops anytime, anywhere",
+                title: t('login.accessTitle', "24/7 Access"),
+                description: t('login.accessDesc', "Monitor your crops anytime, anywhere"),
               },
             ].map((feature, index) => (
               <div key={index} className="flex items-start gap-4">
@@ -433,11 +435,11 @@ export function Login({ onNavigate }: LoginProps) {
               ))}
             </div>
             <p className="text-green-50 mb-4 italic">
-              "AgriCare AI helped me save my entire crop. The early detection feature is amazing!"
+              "{t('login.testimonialText', 'AgriCare AI helped me save my entire crop. The early detection feature is amazing!')}"
             </p>
             <div className="text-sm">
-              <div className="text-white">Rajesh Kumar</div>
-              <div className="text-green-200">Farmer, Punjab</div>
+              <div className="text-white">{t('login.testimonialName', 'Rajesh Kumar')}</div>
+              <div className="text-green-200">{t('login.testimonialRole', 'Farmer, Punjab')}</div>
             </div>
           </div>
         </div>

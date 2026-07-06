@@ -1,75 +1,78 @@
 import { Scan, Droplets, TrendingUp, Brain, ArrowRight, CheckCircle, Users, Award, Target, Sparkles, Shield, Zap, Globe, Play } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { useTranslation } from 'react-i18next';
 
 interface LandingProps {
   onNavigate: (page: string) => void;
 }
 
 export function Landing({ onNavigate }: LandingProps) {
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: Scan,
-      title: 'AI Disease Detection',
-      description: 'Upload crop images and get instant disease diagnosis with 95%+ accuracy using advanced deep learning',
+      title: t('landing.features.feature_1_title'),
+      description: t('landing.features.feature_1_desc'),
       color: 'from-emerald-500 to-teal-600',
       bgColor: 'bg-emerald-50',
     },
     {
       icon: Brain,
-      title: 'Smart Treatment Plans',
-      description: 'Receive personalized treatment recommendations including organic, chemical, and preventive solutions',
+      title: t('landing.features.feature_2_title'),
+      description: t('landing.features.feature_2_desc'),
       color: 'from-blue-500 to-indigo-600',
       bgColor: 'bg-blue-50',
     },
     {
       icon: Droplets,
-      title: 'Weather Intelligence',
-      description: 'Real-time weather forecasts with crop-specific farming advice and severe weather alerts',
+      title: t('landing.features.feature_3_title'),
+      description: t('landing.features.feature_3_desc'),
       color: 'from-cyan-500 to-blue-600',
       bgColor: 'bg-cyan-50',
     },
     {
       icon: TrendingUp,
-      title: 'Live Market Rates',
-      description: 'Access real-time Mandi prices across India with price trends to maximize your profits',
+      title: t('landing.features.feature_4_title'),
+      description: t('landing.features.feature_4_desc'),
       color: 'from-orange-500 to-amber-600',
       bgColor: 'bg-orange-50',
     },
   ];
 
   const benefits = [
-    { icon: Zap, title: 'Lightning Fast', description: 'Results in under 5 seconds' },
-    { icon: Shield, title: 'Expert Validated', description: 'Verified by agricultural experts' },
-    { icon: Globe, title: '24/7 Available', description: 'Access anytime, anywhere' },
-    { icon: Sparkles, title: 'Always Learning', description: 'AI improves continuously' },
+    { icon: Zap, title: t('landing.benefits.benefit_1_title'), description: t('landing.benefits.benefit_1_desc') },
+    { icon: Shield, title: t('landing.benefits.benefit_2_title'), description: t('landing.benefits.benefit_2_desc') },
+    { icon: Globe, title: t('landing.benefits.benefit_3_title'), description: t('landing.benefits.benefit_3_desc') },
+    { icon: Sparkles, title: t('landing.benefits.benefit_4_title'), description: t('landing.benefits.benefit_4_desc') },
   ];
 
   const testimonials = [
     {
       name: 'Rajesh Kumar',
       location: 'Punjab',
-      text: 'AgriCare AI helped me detect late blight early and save my entire tomato crop. The treatment suggestions were spot on!',
+      text: t('landing.testimonials.t1_text'),
       rating: 5,
     },
     {
       name: 'Sunita Devi',
       location: 'Maharashtra',
-      text: 'Easy to use and very accurate. The weather alerts help me plan my farming activities better.',
+      text: t('landing.testimonials.t2_text'),
       rating: 5,
     },
     {
       name: 'Arjun Patel',
       location: 'Gujarat',
-      text: 'The market price feature is amazing! I can now sell my produce at the right time for better prices.',
+      text: t('landing.testimonials.t3_text'),
       rating: 5,
     },
   ];
 
   const stats = [
-    { label: 'Diseases Detected', value: '150+', icon: Target },
-    { label: 'Accuracy Rate', value: '95%', icon: Award },
-    { label: 'Farmers Helped', value: '50K+', icon: Users },
-    { label: 'Crops Saved', value: '100K+', icon: Sparkles },
+    { label: t('landing.stats.stat_1_label'), value: '150+', icon: Target },
+    { label: t('landing.stats.stat_2_label'), value: '95%', icon: Award },
+    { label: t('landing.stats.stat_3_label'), value: '50K+', icon: Users },
+    { label: t('landing.stats.stat_4_label'), value: '100K+', icon: Sparkles },
   ];
 
   return (
@@ -96,19 +99,15 @@ export function Landing({ onNavigate }: LandingProps) {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white mb-6">
               <Sparkles className="size-4" />
-              <span className="text-sm">AI-Powered Agricultural Intelligence</span>
+              <span className="text-sm">{t('landing.ai_powered_intelligence', 'AI-Powered Agricultural Intelligence')}</span>
             </div>
 
             <h1 className="text-white mb-6 text-5xl md:text-6xl lg:text-7xl">
-              Protect Your Crops with{' '}
-              <span className="bg-gradient-to-r from-green-200 to-emerald-200 bg-clip-text text-transparent">
-                AI Technology
-              </span>
+              {t("landing.hero_title")}
             </h1>
             
             <p className="text-xl md:text-2xl text-green-50 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Upload a photo, get instant disease diagnosis, and receive expert treatment recommendations. 
-              Join 50,000+ farmers using cutting-edge AI to save their harvests.
+              {t("landing.hero_subtitle")}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -117,7 +116,7 @@ export function Landing({ onNavigate }: LandingProps) {
                 className="group px-8 py-5 bg-white text-green-700 rounded-xl hover:bg-green-50 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3 text-lg"
               >
                 <Scan className="size-6" />
-                Start Free Detection
+                {t("landing.get_started")}
                 <ArrowRight className="size-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
@@ -125,7 +124,7 @@ export function Landing({ onNavigate }: LandingProps) {
                 className="group px-8 py-5 bg-white/10 backdrop-blur-md text-white border-2 border-white/30 rounded-xl hover:bg-white/20 transition-all flex items-center gap-3 text-lg"
               >
                 <Play className="size-5" />
-                Watch Demo
+                {t("landing.learn_more")}
               </button>
             </div>
 
@@ -133,15 +132,15 @@ export function Landing({ onNavigate }: LandingProps) {
             <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-green-100">
               <div className="flex items-center gap-2">
                 <CheckCircle className="size-5 text-green-300" />
-                <span>No credit card required</span>
+                <span>{t('landing.no_credit_card', 'No credit card required')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="size-5 text-green-300" />
-                <span>Free forever</span>
+                <span>{t('landing.free_forever', 'Free forever')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="size-5 text-green-300" />
-                <span>24/7 Support</span>
+                <span>{t('landing.24_7_support', '24/7 Support')}</span>
               </div>
             </div>
           </div>
@@ -179,11 +178,11 @@ export function Landing({ onNavigate }: LandingProps) {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 rounded-full text-green-700 mb-4">
               <Sparkles className="size-4" />
-              <span className="text-sm">Powerful Features</span>
+              <span className="text-sm">{t('landing.powerful_features', 'Powerful Features')}</span>
             </div>
-            <h2 className="text-gray-900 mb-4 text-4xl md:text-5xl">Everything You Need in One Platform</h2>
+            <h2 className="text-gray-900 mb-4 text-4xl md:text-5xl">{t('landing.features_title')}</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive agricultural intelligence powered by artificial intelligence
+              {t('landing.features_subtitle')}
             </p>
           </div>
 
@@ -223,15 +222,15 @@ export function Landing({ onNavigate }: LandingProps) {
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-green-500 to-emerald-600 text-white p-8 rounded-2xl shadow-2xl">
                   <div className="text-5xl mb-2">95%</div>
-                  <div className="text-green-100">Accuracy Rate</div>
+                  <div className="text-green-100">{t('landing.accuracy_rate_text', 'Accuracy Rate')}</div>
                 </div>
               </div>
 
               {/* Content */}
               <div>
-                <h2 className="text-gray-900 mb-6 text-4xl">Why Choose AgriCare AI?</h2>
+                <h2 className="text-gray-900 mb-6 text-4xl">{t('landing.benefits_title')}</h2>
                 <p className="text-xl text-gray-600 mb-8">
-                  Built by farmers, for farmers. Our AI technology brings enterprise-grade crop disease detection to your fingertips.
+                  {t('landing.benefits_subtitle')}
                 </p>
                 <div className="space-y-4">
                   {benefits.map((benefit, index) => {
@@ -259,9 +258,9 @@ export function Landing({ onNavigate }: LandingProps) {
       <section className="py-24 bg-gradient-to-br from-green-50 to-emerald-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-gray-900 mb-4 text-4xl">Trusted by Farmers Across India</h2>
+            <h2 className="text-gray-900 mb-4 text-4xl">{t('landing.testimonials_title')}</h2>
             <p className="text-xl text-gray-600">
-              See what farmers are saying about AgriCare AI
+              {t('landing.testimonials_subtitle')}
             </p>
           </div>
 
@@ -299,30 +298,30 @@ export function Landing({ onNavigate }: LandingProps) {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-gray-900 mb-4 text-4xl">Get Started in 3 Simple Steps</h2>
-            <p className="text-xl text-gray-600">It's as easy as 1-2-3</p>
+            <h2 className="text-gray-900 mb-4 text-4xl">{t('landing.how_it_works_title')}</h2>
+            <p className="text-xl text-gray-600">{t('landing.how_it_works_subtitle')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
             {[
               {
                 step: '1',
-                title: 'Upload Photo',
-                description: 'Take a clear photo of the affected crop leaves',
+                title: t('landing.steps.step_1_title'),
+                description: t('landing.steps.step_1_desc'),
                 icon: Scan,
                 color: 'from-blue-500 to-cyan-600',
               },
               {
                 step: '2',
-                title: 'AI Analysis',
-                description: 'Our AI analyzes the image in under 5 seconds',
+                title: t('landing.steps.step_2_title'),
+                description: t('landing.steps.step_2_desc'),
                 icon: Brain,
                 color: 'from-purple-500 to-pink-600',
               },
               {
                 step: '3',
-                title: 'Get Treatment',
-                description: 'Receive detailed treatment recommendations',
+                title: t('landing.steps.step_3_title'),
+                description: t('landing.steps.step_3_desc'),
                 icon: CheckCircle,
                 color: 'from-green-500 to-emerald-600',
               },
@@ -351,7 +350,7 @@ export function Landing({ onNavigate }: LandingProps) {
               onClick={() => onNavigate('how-it-works')}
               className="text-green-600 hover:text-green-700 flex items-center gap-2 mx-auto text-lg"
             >
-              Learn more about our technology
+              {t('landing.learn_more_tech')}
               <ArrowRight className="size-5" />
             </button>
           </div>
@@ -367,9 +366,9 @@ export function Landing({ onNavigate }: LandingProps) {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="mb-6 text-4xl md:text-5xl">Ready to Protect Your Crops?</h2>
+            <h2 className="mb-6 text-4xl md:text-5xl">{t('landing.cta_title')}</h2>
             <p className="text-2xl text-green-100 mb-10">
-              Join 50,000+ farmers using AI to detect diseases early and save their harvests
+              {t('landing.cta_subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -377,14 +376,14 @@ export function Landing({ onNavigate }: LandingProps) {
                 className="px-10 py-5 bg-white text-green-700 rounded-xl hover:bg-green-50 transition-all transform hover:scale-105 shadow-2xl flex items-center justify-center gap-3 text-lg"
               >
                 <Scan className="size-6" />
-                Start Detection Now
+                {t('landing.start_detection_now')}
                 <ArrowRight className="size-5" />
               </button>
               <button
                 onClick={() => onNavigate('login')}
                 className="px-10 py-5 bg-green-800/50 backdrop-blur-sm text-white border-2 border-white/30 rounded-xl hover:bg-green-800/70 transition-all flex items-center justify-center gap-3 text-lg"
               >
-                Sign In
+                {t('landing.sign_in')}
               </button>
             </div>
           </div>
